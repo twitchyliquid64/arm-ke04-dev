@@ -24,29 +24,22 @@ static void ics_setup(void)
 int main()
 {
     //set up the clock to our known 48MHz frequency
-    ics_setup();
+    //ics_setup();
 
-#if DEBUG
-    //enable GPIO
-    GPIOA->PIDR |= 1 << 8;
-    GPIOA->PDDR |= 1 << 8;
-    GPIOA->PSOR |= 1 << 8;
+    //__enable_irq(); //Whats this for
 
-    SIM->SCGC |= SIM_SCGC_PIT_MASK;
-    PIT->MCR = 0;
-    PIT->CHANNEL[0].LDVAL = 12000000U;
-    PIT->CHANNEL[0].TCTRL = PIT_TCTRL_TIE_MASK;
-    PIT->CHANNEL[0].TFLG = 0x1;
-    PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TEN_MASK;
-    NVIC->ISER[0] = 1 << 22;
-#endif
-    __enable_irq();
-
-
+    GPIOA->PIDR |= 1 << 17;
+    GPIOA->PDDR |= 1 << 17;
+    GPIOA->PSOR |= 1 << 17;
+    uint32_t volatile soFar = 0;
 
     while (1)
     {
-        //TODO: Do something here.
+        soFar++;
+        if (soFar > 999999){
+          GPIOA->PTOR |= 1 << 17;
+          soFar = 0;
+        }
 
         //on every cycle we pet the dog
         //NOTE: We cannot use an interrupt to reset the watchdog.

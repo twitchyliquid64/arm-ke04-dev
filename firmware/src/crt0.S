@@ -113,6 +113,7 @@ _startup:
     ldr r6,=0
     ldr r7,=0
 
+    /* Write the address of the IVT into 0xE000ED08 */
     ldr r0, =0xE000ED08
     ldr r1, =__interrupt_vector_table
     str r1,[r0]

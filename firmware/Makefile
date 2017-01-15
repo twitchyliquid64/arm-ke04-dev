@@ -46,9 +46,28 @@ RM = rm -rf
 OBJ := $(addprefix $(OBJDIR)/,$(notdir $(SRC:.c=.o)))
 OBJ += $(addprefix $(OBJDIR)/,$(notdir $(ASM:.S=.o)))
 
-all:: $(BINDIR)/$(PROJECT).hex
+#Compiles the .hex & .bin file - for MEMORY write
+all:: $(BINDIR)/$(PROJECT).hex $(BINDIR)/$(PROJECT).bin
 
+#Compiles a binary file - for MEMORY write
 flat: $(BINDIR)/$(PROJECT).bin
+
+#Prints the absolute memory address of the first instuction.
+p_start: $(BINDIR)/$(PROJECT).elf
+	objdump bin/firmware.elf -t | grep _startup
+
+#Prints the absolute memory address of the initial stack pointer.
+p_stack: $(BINDIR)/$(PROJECT).elf
+	objdump bin/firmware.elf -t | grep _top_stack
+
+#Writes the firmware into a connected devices flash.
+flash: flat
+	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -CommandFile flash.jlink -If SWD -Speed 500
+
+#Writes the firmware into a connected devices RAM.
+#NOTE: Assumes the device already has a IVT setup in flash with the correct stack.
+test: flat
+	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -CommandFile test.jlink -If SWD -Speed 500
 
 list: $(BINDIR)/$(PROJECT).elf
 	$(OBJDUMP) -D $(BINDIR)/$(PROJECT).elf > $(BINDIR)/$(PROJECT).lst

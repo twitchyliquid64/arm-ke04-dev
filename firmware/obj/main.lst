@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccFq8twJ.s 			page 1
+ARM GAS  /tmp/ccaZUzng.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -53,890 +53,531 @@ ARM GAS  /tmp/ccFq8twJ.s 			page 1
   25:src/main.c    **** {
   26              		.loc 1 25 0
   27              		.cfi_startproc
-  28              	.LBB8:
-  29              	.LBB9:
-  19:src/main.c    ****     ICS->C1 = 0x04; //internal reference clock to FLL
-  30              		.loc 1 19 0
-  31 0000 0022     		mov	r2, #0
-ARM GAS  /tmp/ccFq8twJ.s 			page 2
-
-
-  32 0002 034B     		ldr	r3, .L4
-  33 0004 5A70     		strb	r2, [r3, #1]
-  20:src/main.c    **** }
-  34              		.loc 1 20 0
-  35 0006 0432     		add	r2, r2, #4
-  36 0008 1A70     		strb	r2, [r3]
-  37              	.LBE9:
-  38              	.LBE8:
-  39              	.LBB10:
-  40              	.LBB11:
-  41              		.file 2 "include/core_cmFunc.h"
-   1:include/core_cmFunc.h **** /**************************************************************************//**
-   2:include/core_cmFunc.h ****  * @file     core_cmFunc.h
-   3:include/core_cmFunc.h ****  * @brief    CMSIS Cortex-M Core Function Access Header File
-   4:include/core_cmFunc.h ****  * @version  V3.20
-   5:include/core_cmFunc.h ****  * @date     25. February 2013
-   6:include/core_cmFunc.h ****  *
-   7:include/core_cmFunc.h ****  * @note
-   8:include/core_cmFunc.h ****  *
-   9:include/core_cmFunc.h ****  ******************************************************************************/
-  10:include/core_cmFunc.h **** /* Copyright (c) 2009 - 2013 ARM LIMITED
-  11:include/core_cmFunc.h **** 
-  12:include/core_cmFunc.h ****    All rights reserved.
-  13:include/core_cmFunc.h ****    Redistribution and use in source and binary forms, with or without
-  14:include/core_cmFunc.h ****    modification, are permitted provided that the following conditions are met:
-  15:include/core_cmFunc.h ****    - Redistributions of source code must retain the above copyright
-  16:include/core_cmFunc.h ****      notice, this list of conditions and the following disclaimer.
-  17:include/core_cmFunc.h ****    - Redistributions in binary form must reproduce the above copyright
-  18:include/core_cmFunc.h ****      notice, this list of conditions and the following disclaimer in the
-  19:include/core_cmFunc.h ****      documentation and/or other materials provided with the distribution.
-  20:include/core_cmFunc.h ****    - Neither the name of ARM nor the names of its contributors may be used
-  21:include/core_cmFunc.h ****      to endorse or promote products derived from this software without
-  22:include/core_cmFunc.h ****      specific prior written permission.
-  23:include/core_cmFunc.h ****    *
-  24:include/core_cmFunc.h ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  25:include/core_cmFunc.h ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  26:include/core_cmFunc.h ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-  27:include/core_cmFunc.h ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
-  28:include/core_cmFunc.h ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-  29:include/core_cmFunc.h ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-  30:include/core_cmFunc.h ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-  31:include/core_cmFunc.h ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-  32:include/core_cmFunc.h ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-  33:include/core_cmFunc.h ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-  34:include/core_cmFunc.h ****    POSSIBILITY OF SUCH DAMAGE.
-  35:include/core_cmFunc.h ****    ---------------------------------------------------------------------------*/
-  36:include/core_cmFunc.h **** 
-  37:include/core_cmFunc.h **** 
-  38:include/core_cmFunc.h **** #ifndef __CORE_CMFUNC_H
-  39:include/core_cmFunc.h **** #define __CORE_CMFUNC_H
-  40:include/core_cmFunc.h **** 
-  41:include/core_cmFunc.h **** 
-  42:include/core_cmFunc.h **** /* ###########################  Core Function Access  ########################### */
-  43:include/core_cmFunc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
-  44:include/core_cmFunc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
-  45:include/core_cmFunc.h ****   @{
-  46:include/core_cmFunc.h ****  */
-ARM GAS  /tmp/ccFq8twJ.s 			page 3
-
-
-  47:include/core_cmFunc.h **** 
-  48:include/core_cmFunc.h **** #if   defined ( __CC_ARM ) /*------------------RealView Compiler -----------------*/
-  49:include/core_cmFunc.h **** /* ARM armcc specific functions */
-  50:include/core_cmFunc.h **** 
-  51:include/core_cmFunc.h **** #if (__ARMCC_VERSION < 400677)
-  52:include/core_cmFunc.h ****   #error "Please use ARM Compiler Toolchain V4.0.677 or later!"
-  53:include/core_cmFunc.h **** #endif
-  54:include/core_cmFunc.h **** 
-  55:include/core_cmFunc.h **** /* intrinsic void __enable_irq();     */
-  56:include/core_cmFunc.h **** /* intrinsic void __disable_irq();    */
-  57:include/core_cmFunc.h **** 
-  58:include/core_cmFunc.h **** /** \brief  Get Control Register
-  59:include/core_cmFunc.h **** 
-  60:include/core_cmFunc.h ****     This function returns the content of the Control Register.
-  61:include/core_cmFunc.h **** 
-  62:include/core_cmFunc.h ****     \return               Control Register value
-  63:include/core_cmFunc.h ****  */
-  64:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_CONTROL(void)
-  65:include/core_cmFunc.h **** {
-  66:include/core_cmFunc.h ****   register uint32_t __regControl         __ASM("control");
-  67:include/core_cmFunc.h ****   return(__regControl);
-  68:include/core_cmFunc.h **** }
-  69:include/core_cmFunc.h **** 
-  70:include/core_cmFunc.h **** 
-  71:include/core_cmFunc.h **** /** \brief  Set Control Register
-  72:include/core_cmFunc.h **** 
-  73:include/core_cmFunc.h ****     This function writes the given value to the Control Register.
-  74:include/core_cmFunc.h **** 
-  75:include/core_cmFunc.h ****     \param [in]    control  Control Register value to set
-  76:include/core_cmFunc.h ****  */
-  77:include/core_cmFunc.h **** __STATIC_INLINE void __set_CONTROL(uint32_t control)
-  78:include/core_cmFunc.h **** {
-  79:include/core_cmFunc.h ****   register uint32_t __regControl         __ASM("control");
-  80:include/core_cmFunc.h ****   __regControl = control;
-  81:include/core_cmFunc.h **** }
-  82:include/core_cmFunc.h **** 
-  83:include/core_cmFunc.h **** 
-  84:include/core_cmFunc.h **** /** \brief  Get IPSR Register
-  85:include/core_cmFunc.h **** 
-  86:include/core_cmFunc.h ****     This function returns the content of the IPSR Register.
-  87:include/core_cmFunc.h **** 
-  88:include/core_cmFunc.h ****     \return               IPSR Register value
-  89:include/core_cmFunc.h ****  */
-  90:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_IPSR(void)
-  91:include/core_cmFunc.h **** {
-  92:include/core_cmFunc.h ****   register uint32_t __regIPSR          __ASM("ipsr");
-  93:include/core_cmFunc.h ****   return(__regIPSR);
-  94:include/core_cmFunc.h **** }
-  95:include/core_cmFunc.h **** 
-  96:include/core_cmFunc.h **** 
-  97:include/core_cmFunc.h **** /** \brief  Get APSR Register
-  98:include/core_cmFunc.h **** 
-  99:include/core_cmFunc.h ****     This function returns the content of the APSR Register.
- 100:include/core_cmFunc.h **** 
- 101:include/core_cmFunc.h ****     \return               APSR Register value
- 102:include/core_cmFunc.h ****  */
- 103:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_APSR(void)
-ARM GAS  /tmp/ccFq8twJ.s 			page 4
-
-
- 104:include/core_cmFunc.h **** {
- 105:include/core_cmFunc.h ****   register uint32_t __regAPSR          __ASM("apsr");
- 106:include/core_cmFunc.h ****   return(__regAPSR);
- 107:include/core_cmFunc.h **** }
- 108:include/core_cmFunc.h **** 
- 109:include/core_cmFunc.h **** 
- 110:include/core_cmFunc.h **** /** \brief  Get xPSR Register
- 111:include/core_cmFunc.h **** 
- 112:include/core_cmFunc.h ****     This function returns the content of the xPSR Register.
- 113:include/core_cmFunc.h **** 
- 114:include/core_cmFunc.h ****     \return               xPSR Register value
- 115:include/core_cmFunc.h ****  */
- 116:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_xPSR(void)
- 117:include/core_cmFunc.h **** {
- 118:include/core_cmFunc.h ****   register uint32_t __regXPSR          __ASM("xpsr");
- 119:include/core_cmFunc.h ****   return(__regXPSR);
- 120:include/core_cmFunc.h **** }
- 121:include/core_cmFunc.h **** 
- 122:include/core_cmFunc.h **** 
- 123:include/core_cmFunc.h **** /** \brief  Get Process Stack Pointer
- 124:include/core_cmFunc.h **** 
- 125:include/core_cmFunc.h ****     This function returns the current value of the Process Stack Pointer (PSP).
- 126:include/core_cmFunc.h **** 
- 127:include/core_cmFunc.h ****     \return               PSP Register value
- 128:include/core_cmFunc.h ****  */
- 129:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_PSP(void)
- 130:include/core_cmFunc.h **** {
- 131:include/core_cmFunc.h ****   register uint32_t __regProcessStackPointer  __ASM("psp");
- 132:include/core_cmFunc.h ****   return(__regProcessStackPointer);
- 133:include/core_cmFunc.h **** }
- 134:include/core_cmFunc.h **** 
- 135:include/core_cmFunc.h **** 
- 136:include/core_cmFunc.h **** /** \brief  Set Process Stack Pointer
- 137:include/core_cmFunc.h **** 
- 138:include/core_cmFunc.h ****     This function assigns the given value to the Process Stack Pointer (PSP).
- 139:include/core_cmFunc.h **** 
- 140:include/core_cmFunc.h ****     \param [in]    topOfProcStack  Process Stack Pointer value to set
- 141:include/core_cmFunc.h ****  */
- 142:include/core_cmFunc.h **** __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
- 143:include/core_cmFunc.h **** {
- 144:include/core_cmFunc.h ****   register uint32_t __regProcessStackPointer  __ASM("psp");
- 145:include/core_cmFunc.h ****   __regProcessStackPointer = topOfProcStack;
- 146:include/core_cmFunc.h **** }
- 147:include/core_cmFunc.h **** 
- 148:include/core_cmFunc.h **** 
- 149:include/core_cmFunc.h **** /** \brief  Get Main Stack Pointer
- 150:include/core_cmFunc.h **** 
- 151:include/core_cmFunc.h ****     This function returns the current value of the Main Stack Pointer (MSP).
- 152:include/core_cmFunc.h **** 
- 153:include/core_cmFunc.h ****     \return               MSP Register value
- 154:include/core_cmFunc.h ****  */
- 155:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_MSP(void)
- 156:include/core_cmFunc.h **** {
- 157:include/core_cmFunc.h ****   register uint32_t __regMainStackPointer     __ASM("msp");
- 158:include/core_cmFunc.h ****   return(__regMainStackPointer);
- 159:include/core_cmFunc.h **** }
- 160:include/core_cmFunc.h **** 
-ARM GAS  /tmp/ccFq8twJ.s 			page 5
-
-
- 161:include/core_cmFunc.h **** 
- 162:include/core_cmFunc.h **** /** \brief  Set Main Stack Pointer
- 163:include/core_cmFunc.h **** 
- 164:include/core_cmFunc.h ****     This function assigns the given value to the Main Stack Pointer (MSP).
- 165:include/core_cmFunc.h **** 
- 166:include/core_cmFunc.h ****     \param [in]    topOfMainStack  Main Stack Pointer value to set
- 167:include/core_cmFunc.h ****  */
- 168:include/core_cmFunc.h **** __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
- 169:include/core_cmFunc.h **** {
- 170:include/core_cmFunc.h ****   register uint32_t __regMainStackPointer     __ASM("msp");
- 171:include/core_cmFunc.h ****   __regMainStackPointer = topOfMainStack;
- 172:include/core_cmFunc.h **** }
- 173:include/core_cmFunc.h **** 
- 174:include/core_cmFunc.h **** 
- 175:include/core_cmFunc.h **** /** \brief  Get Priority Mask
- 176:include/core_cmFunc.h **** 
- 177:include/core_cmFunc.h ****     This function returns the current state of the priority mask bit from the Priority Mask Registe
- 178:include/core_cmFunc.h **** 
- 179:include/core_cmFunc.h ****     \return               Priority Mask value
- 180:include/core_cmFunc.h ****  */
- 181:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_PRIMASK(void)
- 182:include/core_cmFunc.h **** {
- 183:include/core_cmFunc.h ****   register uint32_t __regPriMask         __ASM("primask");
- 184:include/core_cmFunc.h ****   return(__regPriMask);
- 185:include/core_cmFunc.h **** }
- 186:include/core_cmFunc.h **** 
- 187:include/core_cmFunc.h **** 
- 188:include/core_cmFunc.h **** /** \brief  Set Priority Mask
- 189:include/core_cmFunc.h **** 
- 190:include/core_cmFunc.h ****     This function assigns the given value to the Priority Mask Register.
- 191:include/core_cmFunc.h **** 
- 192:include/core_cmFunc.h ****     \param [in]    priMask  Priority Mask
- 193:include/core_cmFunc.h ****  */
- 194:include/core_cmFunc.h **** __STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
- 195:include/core_cmFunc.h **** {
- 196:include/core_cmFunc.h ****   register uint32_t __regPriMask         __ASM("primask");
- 197:include/core_cmFunc.h ****   __regPriMask = (priMask);
- 198:include/core_cmFunc.h **** }
- 199:include/core_cmFunc.h **** 
- 200:include/core_cmFunc.h **** 
- 201:include/core_cmFunc.h **** #if       (__CORTEX_M >= 0x03)
- 202:include/core_cmFunc.h **** 
- 203:include/core_cmFunc.h **** /** \brief  Enable FIQ
- 204:include/core_cmFunc.h **** 
- 205:include/core_cmFunc.h ****     This function enables FIQ interrupts by clearing the F-bit in the CPSR.
- 206:include/core_cmFunc.h ****     Can only be executed in Privileged modes.
- 207:include/core_cmFunc.h ****  */
- 208:include/core_cmFunc.h **** #define __enable_fault_irq                __enable_fiq
- 209:include/core_cmFunc.h **** 
- 210:include/core_cmFunc.h **** 
- 211:include/core_cmFunc.h **** /** \brief  Disable FIQ
- 212:include/core_cmFunc.h **** 
- 213:include/core_cmFunc.h ****     This function disables FIQ interrupts by setting the F-bit in the CPSR.
- 214:include/core_cmFunc.h ****     Can only be executed in Privileged modes.
- 215:include/core_cmFunc.h ****  */
- 216:include/core_cmFunc.h **** #define __disable_fault_irq               __disable_fiq
- 217:include/core_cmFunc.h **** 
-ARM GAS  /tmp/ccFq8twJ.s 			page 6
-
-
- 218:include/core_cmFunc.h **** 
- 219:include/core_cmFunc.h **** /** \brief  Get Base Priority
- 220:include/core_cmFunc.h **** 
- 221:include/core_cmFunc.h ****     This function returns the current value of the Base Priority register.
- 222:include/core_cmFunc.h **** 
- 223:include/core_cmFunc.h ****     \return               Base Priority register value
- 224:include/core_cmFunc.h ****  */
- 225:include/core_cmFunc.h **** __STATIC_INLINE uint32_t  __get_BASEPRI(void)
- 226:include/core_cmFunc.h **** {
- 227:include/core_cmFunc.h ****   register uint32_t __regBasePri         __ASM("basepri");
- 228:include/core_cmFunc.h ****   return(__regBasePri);
- 229:include/core_cmFunc.h **** }
- 230:include/core_cmFunc.h **** 
- 231:include/core_cmFunc.h **** 
- 232:include/core_cmFunc.h **** /** \brief  Set Base Priority
- 233:include/core_cmFunc.h **** 
- 234:include/core_cmFunc.h ****     This function assigns the given value to the Base Priority register.
- 235:include/core_cmFunc.h **** 
- 236:include/core_cmFunc.h ****     \param [in]    basePri  Base Priority value to set
- 237:include/core_cmFunc.h ****  */
- 238:include/core_cmFunc.h **** __STATIC_INLINE void __set_BASEPRI(uint32_t basePri)
- 239:include/core_cmFunc.h **** {
- 240:include/core_cmFunc.h ****   register uint32_t __regBasePri         __ASM("basepri");
- 241:include/core_cmFunc.h ****   __regBasePri = (basePri & 0xff);
- 242:include/core_cmFunc.h **** }
- 243:include/core_cmFunc.h **** 
- 244:include/core_cmFunc.h **** 
- 245:include/core_cmFunc.h **** /** \brief  Get Fault Mask
- 246:include/core_cmFunc.h **** 
- 247:include/core_cmFunc.h ****     This function returns the current value of the Fault Mask register.
- 248:include/core_cmFunc.h **** 
- 249:include/core_cmFunc.h ****     \return               Fault Mask register value
- 250:include/core_cmFunc.h ****  */
- 251:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_FAULTMASK(void)
- 252:include/core_cmFunc.h **** {
- 253:include/core_cmFunc.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
- 254:include/core_cmFunc.h ****   return(__regFaultMask);
- 255:include/core_cmFunc.h **** }
- 256:include/core_cmFunc.h **** 
- 257:include/core_cmFunc.h **** 
- 258:include/core_cmFunc.h **** /** \brief  Set Fault Mask
- 259:include/core_cmFunc.h **** 
- 260:include/core_cmFunc.h ****     This function assigns the given value to the Fault Mask register.
- 261:include/core_cmFunc.h **** 
- 262:include/core_cmFunc.h ****     \param [in]    faultMask  Fault Mask value to set
- 263:include/core_cmFunc.h ****  */
- 264:include/core_cmFunc.h **** __STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask)
- 265:include/core_cmFunc.h **** {
- 266:include/core_cmFunc.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
- 267:include/core_cmFunc.h ****   __regFaultMask = (faultMask & (uint32_t)1);
- 268:include/core_cmFunc.h **** }
- 269:include/core_cmFunc.h **** 
- 270:include/core_cmFunc.h **** #endif /* (__CORTEX_M >= 0x03) */
- 271:include/core_cmFunc.h **** 
- 272:include/core_cmFunc.h **** 
- 273:include/core_cmFunc.h **** #if       (__CORTEX_M == 0x04)
- 274:include/core_cmFunc.h **** 
-ARM GAS  /tmp/ccFq8twJ.s 			page 7
-
-
- 275:include/core_cmFunc.h **** /** \brief  Get FPSCR
- 276:include/core_cmFunc.h **** 
- 277:include/core_cmFunc.h ****     This function returns the current value of the Floating Point Status/Control register.
- 278:include/core_cmFunc.h **** 
- 279:include/core_cmFunc.h ****     \return               Floating Point Status/Control register value
- 280:include/core_cmFunc.h ****  */
- 281:include/core_cmFunc.h **** __STATIC_INLINE uint32_t __get_FPSCR(void)
- 282:include/core_cmFunc.h **** {
- 283:include/core_cmFunc.h **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
- 284:include/core_cmFunc.h ****   register uint32_t __regfpscr         __ASM("fpscr");
- 285:include/core_cmFunc.h ****   return(__regfpscr);
- 286:include/core_cmFunc.h **** #else
- 287:include/core_cmFunc.h ****    return(0);
- 288:include/core_cmFunc.h **** #endif
- 289:include/core_cmFunc.h **** }
- 290:include/core_cmFunc.h **** 
- 291:include/core_cmFunc.h **** 
- 292:include/core_cmFunc.h **** /** \brief  Set FPSCR
- 293:include/core_cmFunc.h **** 
- 294:include/core_cmFunc.h ****     This function assigns the given value to the Floating Point Status/Control register.
- 295:include/core_cmFunc.h **** 
- 296:include/core_cmFunc.h ****     \param [in]    fpscr  Floating Point Status/Control value to set
- 297:include/core_cmFunc.h ****  */
- 298:include/core_cmFunc.h **** __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
- 299:include/core_cmFunc.h **** {
- 300:include/core_cmFunc.h **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
- 301:include/core_cmFunc.h ****   register uint32_t __regfpscr         __ASM("fpscr");
- 302:include/core_cmFunc.h ****   __regfpscr = (fpscr);
- 303:include/core_cmFunc.h **** #endif
- 304:include/core_cmFunc.h **** }
- 305:include/core_cmFunc.h **** 
- 306:include/core_cmFunc.h **** #endif /* (__CORTEX_M == 0x04) */
- 307:include/core_cmFunc.h **** 
- 308:include/core_cmFunc.h **** 
- 309:include/core_cmFunc.h **** #elif defined ( __ICCARM__ ) /*------------------ ICC Compiler -------------------*/
- 310:include/core_cmFunc.h **** /* IAR iccarm specific functions */
- 311:include/core_cmFunc.h **** 
- 312:include/core_cmFunc.h **** #include <cmsis_iar.h>
- 313:include/core_cmFunc.h **** 
- 314:include/core_cmFunc.h **** 
- 315:include/core_cmFunc.h **** #elif defined ( __TMS470__ ) /*---------------- TI CCS Compiler ------------------*/
- 316:include/core_cmFunc.h **** /* TI CCS specific functions */
- 317:include/core_cmFunc.h **** 
- 318:include/core_cmFunc.h **** #include <cmsis_ccs.h>
- 319:include/core_cmFunc.h **** 
- 320:include/core_cmFunc.h **** 
- 321:include/core_cmFunc.h **** #elif defined ( __GNUC__ ) /*------------------ GNU Compiler ---------------------*/
- 322:include/core_cmFunc.h **** /* GNU gcc specific functions */
- 323:include/core_cmFunc.h **** 
- 324:include/core_cmFunc.h **** /** \brief  Enable IRQ Interrupts
- 325:include/core_cmFunc.h **** 
- 326:include/core_cmFunc.h ****   This function enables IRQ interrupts by clearing the I-bit in the CPSR.
- 327:include/core_cmFunc.h ****   Can only be executed in Privileged modes.
- 328:include/core_cmFunc.h ****  */
- 329:include/core_cmFunc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __enable_irq(void)
- 330:include/core_cmFunc.h **** {
- 331:include/core_cmFunc.h ****   __ASM volatile ("cpsie i" : : : "memory");
-ARM GAS  /tmp/ccFq8twJ.s 			page 8
-
-
-  42              		.loc 2 331 0
-  43              	@ 331 "include/core_cmFunc.h" 1
-  44 000a 62B6     		cpsie i
-  45              	@ 0 "" 2
-  46              		.code	16
-  47              	.L2:
-  48              	.LBE11:
-  49              	.LBE10:
   26:src/main.c    ****     //set up the clock to our known 48MHz frequency
-  27:src/main.c    ****     ics_setup();
+  27:src/main.c    ****     //ics_setup();
   28:src/main.c    **** 
-  29:src/main.c    **** #if DEBUG
-  30:src/main.c    ****     //enable GPIO
-  31:src/main.c    ****     GPIOA->PIDR |= 1 << 8;
-  32:src/main.c    ****     GPIOA->PDDR |= 1 << 8;
-  33:src/main.c    ****     GPIOA->PSOR |= 1 << 8;
-  34:src/main.c    **** 
-  35:src/main.c    ****     SIM->SCGC |= SIM_SCGC_PIT_MASK;
-  36:src/main.c    ****     PIT->MCR = 0;
-  37:src/main.c    ****     PIT->CHANNEL[0].LDVAL = 12000000U;
-  38:src/main.c    ****     PIT->CHANNEL[0].TCTRL = PIT_TCTRL_TIE_MASK;
-  39:src/main.c    ****     PIT->CHANNEL[0].TFLG = 0x1;
-  40:src/main.c    ****     PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TEN_MASK;
-  41:src/main.c    ****     NVIC->ISER[0] = 1 << 22;
-  42:src/main.c    **** #endif
-  43:src/main.c    ****     __enable_irq();
-  44:src/main.c    **** 
-  45:src/main.c    **** 
-  46:src/main.c    **** 
-  47:src/main.c    ****     while (1)
-  48:src/main.c    ****     {
-  49:src/main.c    ****         //TODO: Do something here.
-  50:src/main.c    **** 
-  51:src/main.c    ****         //on every cycle we pet the dog
-  52:src/main.c    ****         //NOTE: We cannot use an interrupt to reset the watchdog.
-  53:src/main.c    ****         //It causes a hard fault or something that cuases the CPU to reset :(
-  54:src/main.c    ****         //__disable_irq();
-  55:src/main.c    ****         //WDOG->CNT = 0x02A6;
-  56:src/main.c    ****         //WDOG->CNT = 0x80B4;
-  57:src/main.c    ****         //__enable_irq();
-  58:src/main.c    **** 
-  59:src/main.c    ****     }
-  50              		.loc 1 59 0 discriminator 1
-  51 000c FEE7     		b	.L2
-  52              	.L5:
-  53 000e C046     		.align	2
-  54              	.L4:
-  55 0010 00400640 		.word	1074151424
-  56              		.cfi_endproc
-  57              	.LFE34:
-  58              		.size	main, .-main
-  59              		.text
-  60              	.Letext0:
-  61              		.file 3 "include/MKE04Z4.h"
-  62              		.file 4 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdint-gcc.h"
-  63              		.section	.debug_info,"",%progbits
-  64              	.Ldebug_info0:
-ARM GAS  /tmp/ccFq8twJ.s 			page 9
+  29:src/main.c    ****     //__enable_irq(); //Whats this for
+  30:src/main.c    **** 
+ARM GAS  /tmp/ccaZUzng.s 			page 2
 
 
-  65 0000 15010000 		.4byte	0x115
-  66 0004 0400     		.2byte	0x4
-  67 0006 00000000 		.4byte	.Ldebug_abbrev0
-  68 000a 04       		.byte	0x4
-  69 000b 01       		.uleb128 0x1
-  70 000c 64000000 		.4byte	.LASF14
-  71 0010 01       		.byte	0x1
-  72 0011 59000000 		.4byte	.LASF15
-  73 0015 32010000 		.4byte	.LASF16
-  74 0019 00000000 		.4byte	.Ldebug_ranges0+0
-  75 001d 00000000 		.4byte	0
-  76 0021 00000000 		.4byte	.Ldebug_line0
-  77 0025 02       		.uleb128 0x2
-  78 0026 01       		.byte	0x1
-  79 0027 06       		.byte	0x6
-  80 0028 0A010000 		.4byte	.LASF0
-  81 002c 02       		.uleb128 0x2
-  82 002d 02       		.byte	0x2
-  83 002e 05       		.byte	0x5
-  84 002f 1F010000 		.4byte	.LASF1
-  85 0033 02       		.uleb128 0x2
-  86 0034 04       		.byte	0x4
-  87 0035 05       		.byte	0x5
-  88 0036 E4000000 		.4byte	.LASF2
-  89 003a 02       		.uleb128 0x2
-  90 003b 08       		.byte	0x8
-  91 003c 05       		.byte	0x5
-  92 003d 00000000 		.4byte	.LASF3
-  93 0041 03       		.uleb128 0x3
-  94 0042 28000000 		.4byte	.LASF10
-  95 0046 04       		.byte	0x4
-  96 0047 2E       		.byte	0x2e
-  97 0048 4C000000 		.4byte	0x4c
-  98 004c 02       		.uleb128 0x2
-  99 004d 01       		.byte	0x1
- 100 004e 08       		.byte	0x8
- 101 004f D1000000 		.4byte	.LASF4
- 102 0053 02       		.uleb128 0x2
- 103 0054 02       		.byte	0x2
- 104 0055 07       		.byte	0x7
- 105 0056 F7000000 		.4byte	.LASF5
- 106 005a 02       		.uleb128 0x2
- 107 005b 04       		.byte	0x4
- 108 005c 07       		.byte	0x7
- 109 005d 30000000 		.4byte	.LASF6
- 110 0061 02       		.uleb128 0x2
- 111 0062 08       		.byte	0x8
- 112 0063 07       		.byte	0x7
- 113 0064 42000000 		.4byte	.LASF7
- 114 0068 04       		.uleb128 0x4
- 115 0069 04       		.byte	0x4
- 116 006a 05       		.byte	0x5
- 117 006b 696E7400 		.ascii	"int\000"
- 118 006f 02       		.uleb128 0x2
- 119 0070 04       		.byte	0x4
- 120 0071 07       		.byte	0x7
- 121 0072 0E000000 		.4byte	.LASF8
-ARM GAS  /tmp/ccFq8twJ.s 			page 10
+  31:src/main.c    ****     GPIOA->PIDR |= 1 << 17;
+  28              		.loc 1 31 0
+  29 0000 8021     		mov	r1, #128
+  30 0002 0D4B     		ldr	r3, .L6
+  31 0004 8902     		lsl	r1, r1, #10
+  32 0006 9A69     		ldr	r2, [r3, #24]
+  25:src/main.c    ****     //set up the clock to our known 48MHz frequency
+  33              		.loc 1 25 0
+  34 0008 82B0     		sub	sp, sp, #8
+  35              		.cfi_def_cfa_offset 8
+  36              		.loc 1 31 0
+  37 000a 0A43     		orr	r2, r1
+  38 000c 9A61     		str	r2, [r3, #24]
+  32:src/main.c    ****     GPIOA->PDDR |= 1 << 17;
+  39              		.loc 1 32 0
+  40 000e 5A69     		ldr	r2, [r3, #20]
+  41 0010 0A43     		orr	r2, r1
+  42 0012 5A61     		str	r2, [r3, #20]
+  33:src/main.c    ****     GPIOA->PSOR |= 1 << 17;
+  43              		.loc 1 33 0
+  44 0014 5A68     		ldr	r2, [r3, #4]
+  45 0016 0A43     		orr	r2, r1
+  46 0018 5A60     		str	r2, [r3, #4]
+  47              	.L4:
+  34:src/main.c    ****     uint32_t volatile soFar = 0;
+  48              		.loc 1 34 0
+  49 001a 0022     		mov	r2, #0
+  50 001c 0192     		str	r2, [sp, #4]
+  51              	.L2:
+  35:src/main.c    **** 
+  36:src/main.c    ****     while (1)
+  37:src/main.c    ****     {
+  38:src/main.c    ****         soFar++;
+  52              		.loc 1 38 0
+  53 001e 019A     		ldr	r2, [sp, #4]
+  54 0020 0132     		add	r2, r2, #1
+  55 0022 0192     		str	r2, [sp, #4]
+  39:src/main.c    ****         if (soFar > 999999){
+  56              		.loc 1 39 0
+  57 0024 0199     		ldr	r1, [sp, #4]
+  58 0026 054A     		ldr	r2, .L6+4
+  59 0028 9142     		cmp	r1, r2
+  60 002a F8D9     		bls	.L2
+  40:src/main.c    ****           GPIOA->PTOR |= 1 << 17;
+  61              		.loc 1 40 0
+  62 002c 8021     		mov	r1, #128
+  63 002e DA68     		ldr	r2, [r3, #12]
+  64 0030 8902     		lsl	r1, r1, #10
+  65 0032 0A43     		orr	r2, r1
+  66 0034 DA60     		str	r2, [r3, #12]
+  67 0036 F0E7     		b	.L4
+  68              	.L7:
+  69              		.align	2
+  70              	.L6:
+  71 0038 00F00F40 		.word	1074786304
+  72 003c 3F420F00 		.word	999999
+  73              		.cfi_endproc
+ARM GAS  /tmp/ccaZUzng.s 			page 3
 
 
- 122 0076 02       		.uleb128 0x2
- 123 0077 04       		.byte	0x4
- 124 0078 07       		.byte	0x7
- 125 0079 29010000 		.4byte	.LASF9
- 126 007d 05       		.uleb128 0x5
- 127 007e 41000000 		.4byte	0x41
- 128 0082 06       		.uleb128 0x6
- 129 0083 05       		.byte	0x5
- 130 0084 03       		.byte	0x3
- 131 0085 7705     		.2byte	0x577
- 132 0087 C7000000 		.4byte	0xc7
- 133 008b 07       		.uleb128 0x7
- 134 008c 433100   		.ascii	"C1\000"
- 135 008f 03       		.byte	0x3
- 136 0090 7805     		.2byte	0x578
- 137 0092 7D000000 		.4byte	0x7d
- 138 0096 00       		.byte	0
- 139 0097 07       		.uleb128 0x7
- 140 0098 433200   		.ascii	"C2\000"
- 141 009b 03       		.byte	0x3
- 142 009c 7905     		.2byte	0x579
- 143 009e 7D000000 		.4byte	0x7d
- 144 00a2 01       		.byte	0x1
- 145 00a3 07       		.uleb128 0x7
- 146 00a4 433300   		.ascii	"C3\000"
- 147 00a7 03       		.byte	0x3
- 148 00a8 7A05     		.2byte	0x57a
- 149 00aa 7D000000 		.4byte	0x7d
- 150 00ae 02       		.byte	0x2
- 151 00af 07       		.uleb128 0x7
- 152 00b0 433400   		.ascii	"C4\000"
- 153 00b3 03       		.byte	0x3
- 154 00b4 7B05     		.2byte	0x57b
- 155 00b6 7D000000 		.4byte	0x7d
- 156 00ba 03       		.byte	0x3
- 157 00bb 07       		.uleb128 0x7
- 158 00bc 5300     		.ascii	"S\000"
- 159 00be 03       		.byte	0x3
- 160 00bf 7C05     		.2byte	0x57c
- 161 00c1 7D000000 		.4byte	0x7d
- 162 00c5 04       		.byte	0x4
- 163 00c6 00       		.byte	0
- 164 00c7 08       		.uleb128 0x8
- 165 00c8 16010000 		.4byte	.LASF11
- 166 00cc 03       		.byte	0x3
- 167 00cd 7D05     		.2byte	0x57d
- 168 00cf 82000000 		.4byte	0x82
- 169 00d3 09       		.uleb128 0x9
- 170 00d4 1B000000 		.4byte	.LASF12
- 171 00d8 02       		.byte	0x2
- 172 00d9 4901     		.2byte	0x149
- 173 00db 03       		.byte	0x3
- 174 00dc 0A       		.uleb128 0xa
- 175 00dd ED000000 		.4byte	.LASF13
- 176 00e1 01       		.byte	0x1
- 177 00e2 10       		.byte	0x10
- 178 00e3 01       		.byte	0x1
-ARM GAS  /tmp/ccFq8twJ.s 			page 11
+  74              	.LFE34:
+  75              		.size	main, .-main
+  76              		.text
+  77              	.Letext0:
+  78              		.file 2 "include/MKE04Z4.h"
+  79              		.file 3 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdint-gcc.h"
+  80              		.section	.debug_info,"",%progbits
+  81              	.Ldebug_info0:
+  82 0000 19010000 		.4byte	0x119
+  83 0004 0400     		.2byte	0x4
+  84 0006 00000000 		.4byte	.Ldebug_abbrev0
+  85 000a 04       		.byte	0x4
+  86 000b 01       		.uleb128 0x1
+  87 000c 5E000000 		.4byte	.LASF19
+  88 0010 01       		.byte	0x1
+  89 0011 53000000 		.4byte	.LASF20
+  90 0015 46010000 		.4byte	.LASF21
+  91 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  92 001d 00000000 		.4byte	0
+  93 0021 00000000 		.4byte	.Ldebug_line0
+  94 0025 02       		.uleb128 0x2
+  95 0026 01       		.byte	0x1
+  96 0027 06       		.byte	0x6
+  97 0028 18010000 		.4byte	.LASF0
+  98 002c 02       		.uleb128 0x2
+  99 002d 02       		.byte	0x2
+ 100 002e 05       		.byte	0x5
+ 101 002f 33010000 		.4byte	.LASF1
+ 102 0033 02       		.uleb128 0x2
+ 103 0034 04       		.byte	0x4
+ 104 0035 05       		.byte	0x5
+ 105 0036 E9000000 		.4byte	.LASF2
+ 106 003a 02       		.uleb128 0x2
+ 107 003b 08       		.byte	0x8
+ 108 003c 05       		.byte	0x5
+ 109 003d 00000000 		.4byte	.LASF3
+ 110 0041 02       		.uleb128 0x2
+ 111 0042 01       		.byte	0x1
+ 112 0043 08       		.byte	0x8
+ 113 0044 CB000000 		.4byte	.LASF4
+ 114 0048 02       		.uleb128 0x2
+ 115 0049 02       		.byte	0x2
+ 116 004a 07       		.byte	0x7
+ 117 004b 05010000 		.4byte	.LASF5
+ 118 004f 03       		.uleb128 0x3
+ 119 0050 F7000000 		.4byte	.LASF17
+ 120 0054 03       		.byte	0x3
+ 121 0055 34       		.byte	0x34
+ 122 0056 5A000000 		.4byte	0x5a
+ 123 005a 02       		.uleb128 0x2
+ 124 005b 04       		.byte	0x4
+ 125 005c 07       		.byte	0x7
+ 126 005d 2A000000 		.4byte	.LASF6
+ 127 0061 02       		.uleb128 0x2
+ 128 0062 08       		.byte	0x8
+ 129 0063 07       		.byte	0x7
+ 130 0064 3C000000 		.4byte	.LASF7
+ARM GAS  /tmp/ccaZUzng.s 			page 4
 
 
- 179 00e4 0B       		.uleb128 0xb
- 180 00e5 DF000000 		.4byte	.LASF17
- 181 00e9 01       		.byte	0x1
- 182 00ea 18       		.byte	0x18
- 183 00eb 68000000 		.4byte	0x68
- 184 00ef 00000000 		.4byte	.LFB34
- 185 00f3 14000000 		.4byte	.LFE34-.LFB34
- 186 00f7 01       		.uleb128 0x1
- 187 00f8 9C       		.byte	0x9c
- 188 00f9 0C       		.uleb128 0xc
- 189 00fa DC000000 		.4byte	0xdc
- 190 00fe 00000000 		.4byte	.LBB8
- 191 0102 0A000000 		.4byte	.LBE8-.LBB8
- 192 0106 01       		.byte	0x1
- 193 0107 1B       		.byte	0x1b
- 194 0108 0C       		.uleb128 0xc
- 195 0109 D3000000 		.4byte	0xd3
- 196 010d 0A000000 		.4byte	.LBB10
- 197 0111 02000000 		.4byte	.LBE10-.LBB10
- 198 0115 01       		.byte	0x1
- 199 0116 2B       		.byte	0x2b
- 200 0117 00       		.byte	0
- 201 0118 00       		.byte	0
- 202              		.section	.debug_abbrev,"",%progbits
- 203              	.Ldebug_abbrev0:
- 204 0000 01       		.uleb128 0x1
- 205 0001 11       		.uleb128 0x11
- 206 0002 01       		.byte	0x1
- 207 0003 25       		.uleb128 0x25
- 208 0004 0E       		.uleb128 0xe
- 209 0005 13       		.uleb128 0x13
- 210 0006 0B       		.uleb128 0xb
- 211 0007 03       		.uleb128 0x3
- 212 0008 0E       		.uleb128 0xe
- 213 0009 1B       		.uleb128 0x1b
- 214 000a 0E       		.uleb128 0xe
- 215 000b 55       		.uleb128 0x55
- 216 000c 17       		.uleb128 0x17
- 217 000d 11       		.uleb128 0x11
- 218 000e 01       		.uleb128 0x1
- 219 000f 10       		.uleb128 0x10
- 220 0010 17       		.uleb128 0x17
- 221 0011 00       		.byte	0
- 222 0012 00       		.byte	0
- 223 0013 02       		.uleb128 0x2
- 224 0014 24       		.uleb128 0x24
- 225 0015 00       		.byte	0
- 226 0016 0B       		.uleb128 0xb
- 227 0017 0B       		.uleb128 0xb
- 228 0018 3E       		.uleb128 0x3e
- 229 0019 0B       		.uleb128 0xb
- 230 001a 03       		.uleb128 0x3
- 231 001b 0E       		.uleb128 0xe
- 232 001c 00       		.byte	0
- 233 001d 00       		.byte	0
- 234 001e 03       		.uleb128 0x3
- 235 001f 16       		.uleb128 0x16
-ARM GAS  /tmp/ccFq8twJ.s 			page 12
+ 131 0068 04       		.uleb128 0x4
+ 132 0069 04       		.byte	0x4
+ 133 006a 05       		.byte	0x5
+ 134 006b 696E7400 		.ascii	"int\000"
+ 135 006f 02       		.uleb128 0x2
+ 136 0070 04       		.byte	0x4
+ 137 0071 07       		.byte	0x7
+ 138 0072 13000000 		.4byte	.LASF8
+ 139 0076 02       		.uleb128 0x2
+ 140 0077 04       		.byte	0x4
+ 141 0078 07       		.byte	0x7
+ 142 0079 3D010000 		.4byte	.LASF9
+ 143 007d 05       		.uleb128 0x5
+ 144 007e 82000000 		.4byte	0x82
+ 145 0082 06       		.uleb128 0x6
+ 146 0083 4F000000 		.4byte	0x4f
+ 147 0087 07       		.uleb128 0x7
+ 148 0088 1C       		.byte	0x1c
+ 149 0089 02       		.byte	0x2
+ 150 008a 9804     		.2byte	0x498
+ 151 008c EC000000 		.4byte	0xec
+ 152 0090 08       		.uleb128 0x8
+ 153 0091 00010000 		.4byte	.LASF10
+ 154 0095 02       		.byte	0x2
+ 155 0096 9904     		.2byte	0x499
+ 156 0098 82000000 		.4byte	0x82
+ 157 009c 00       		.byte	0
+ 158 009d 08       		.uleb128 0x8
+ 159 009e E4000000 		.4byte	.LASF11
+ 160 00a2 02       		.byte	0x2
+ 161 00a3 9A04     		.2byte	0x49a
+ 162 00a5 82000000 		.4byte	0x82
+ 163 00a9 04       		.byte	0x4
+ 164 00aa 08       		.uleb128 0x8
+ 165 00ab 20000000 		.4byte	.LASF12
+ 166 00af 02       		.byte	0x2
+ 167 00b0 9B04     		.2byte	0x49b
+ 168 00b2 82000000 		.4byte	0x82
+ 169 00b6 08       		.byte	0x8
+ 170 00b7 08       		.uleb128 0x8
+ 171 00b8 25000000 		.4byte	.LASF13
+ 172 00bc 02       		.byte	0x2
+ 173 00bd 9C04     		.2byte	0x49c
+ 174 00bf 82000000 		.4byte	0x82
+ 175 00c3 0C       		.byte	0xc
+ 176 00c4 08       		.uleb128 0x8
+ 177 00c5 2E010000 		.4byte	.LASF14
+ 178 00c9 02       		.byte	0x2
+ 179 00ca 9D04     		.2byte	0x49d
+ 180 00cc 7D000000 		.4byte	0x7d
+ 181 00d0 10       		.byte	0x10
+ 182 00d1 08       		.uleb128 0x8
+ 183 00d2 F2000000 		.4byte	.LASF15
+ 184 00d6 02       		.byte	0x2
+ 185 00d7 9E04     		.2byte	0x49e
+ 186 00d9 82000000 		.4byte	0x82
+ 187 00dd 14       		.byte	0x14
+ARM GAS  /tmp/ccaZUzng.s 			page 5
 
 
- 236 0020 00       		.byte	0
- 237 0021 03       		.uleb128 0x3
- 238 0022 0E       		.uleb128 0xe
- 239 0023 3A       		.uleb128 0x3a
- 240 0024 0B       		.uleb128 0xb
- 241 0025 3B       		.uleb128 0x3b
- 242 0026 0B       		.uleb128 0xb
- 243 0027 49       		.uleb128 0x49
- 244 0028 13       		.uleb128 0x13
- 245 0029 00       		.byte	0
- 246 002a 00       		.byte	0
- 247 002b 04       		.uleb128 0x4
- 248 002c 24       		.uleb128 0x24
- 249 002d 00       		.byte	0
- 250 002e 0B       		.uleb128 0xb
- 251 002f 0B       		.uleb128 0xb
- 252 0030 3E       		.uleb128 0x3e
- 253 0031 0B       		.uleb128 0xb
- 254 0032 03       		.uleb128 0x3
- 255 0033 08       		.uleb128 0x8
- 256 0034 00       		.byte	0
- 257 0035 00       		.byte	0
- 258 0036 05       		.uleb128 0x5
- 259 0037 35       		.uleb128 0x35
- 260 0038 00       		.byte	0
- 261 0039 49       		.uleb128 0x49
- 262 003a 13       		.uleb128 0x13
- 263 003b 00       		.byte	0
- 264 003c 00       		.byte	0
- 265 003d 06       		.uleb128 0x6
- 266 003e 13       		.uleb128 0x13
- 267 003f 01       		.byte	0x1
- 268 0040 0B       		.uleb128 0xb
- 269 0041 0B       		.uleb128 0xb
- 270 0042 3A       		.uleb128 0x3a
- 271 0043 0B       		.uleb128 0xb
- 272 0044 3B       		.uleb128 0x3b
- 273 0045 05       		.uleb128 0x5
- 274 0046 01       		.uleb128 0x1
- 275 0047 13       		.uleb128 0x13
- 276 0048 00       		.byte	0
- 277 0049 00       		.byte	0
- 278 004a 07       		.uleb128 0x7
- 279 004b 0D       		.uleb128 0xd
- 280 004c 00       		.byte	0
- 281 004d 03       		.uleb128 0x3
- 282 004e 08       		.uleb128 0x8
- 283 004f 3A       		.uleb128 0x3a
- 284 0050 0B       		.uleb128 0xb
- 285 0051 3B       		.uleb128 0x3b
- 286 0052 05       		.uleb128 0x5
- 287 0053 49       		.uleb128 0x49
- 288 0054 13       		.uleb128 0x13
- 289 0055 38       		.uleb128 0x38
- 290 0056 0B       		.uleb128 0xb
- 291 0057 00       		.byte	0
- 292 0058 00       		.byte	0
-ARM GAS  /tmp/ccFq8twJ.s 			page 13
+ 188 00de 08       		.uleb128 0x8
+ 189 00df 0E000000 		.4byte	.LASF16
+ 190 00e3 02       		.byte	0x2
+ 191 00e4 9F04     		.2byte	0x49f
+ 192 00e6 82000000 		.4byte	0x82
+ 193 00ea 18       		.byte	0x18
+ 194 00eb 00       		.byte	0
+ 195 00ec 09       		.uleb128 0x9
+ 196 00ed 24010000 		.4byte	.LASF18
+ 197 00f1 02       		.byte	0x2
+ 198 00f2 A004     		.2byte	0x4a0
+ 199 00f4 87000000 		.4byte	0x87
+ 200 00f8 0A       		.uleb128 0xa
+ 201 00f9 DF000000 		.4byte	.LASF22
+ 202 00fd 01       		.byte	0x1
+ 203 00fe 18       		.byte	0x18
+ 204 00ff 68000000 		.4byte	0x68
+ 205 0103 00000000 		.4byte	.LFB34
+ 206 0107 40000000 		.4byte	.LFE34-.LFB34
+ 207 010b 01       		.uleb128 0x1
+ 208 010c 9C       		.byte	0x9c
+ 209 010d 0B       		.uleb128 0xb
+ 210 010e D9000000 		.4byte	.LASF23
+ 211 0112 01       		.byte	0x1
+ 212 0113 22       		.byte	0x22
+ 213 0114 82000000 		.4byte	0x82
+ 214 0118 02       		.uleb128 0x2
+ 215 0119 91       		.byte	0x91
+ 216 011a 7C       		.sleb128 -4
+ 217 011b 00       		.byte	0
+ 218 011c 00       		.byte	0
+ 219              		.section	.debug_abbrev,"",%progbits
+ 220              	.Ldebug_abbrev0:
+ 221 0000 01       		.uleb128 0x1
+ 222 0001 11       		.uleb128 0x11
+ 223 0002 01       		.byte	0x1
+ 224 0003 25       		.uleb128 0x25
+ 225 0004 0E       		.uleb128 0xe
+ 226 0005 13       		.uleb128 0x13
+ 227 0006 0B       		.uleb128 0xb
+ 228 0007 03       		.uleb128 0x3
+ 229 0008 0E       		.uleb128 0xe
+ 230 0009 1B       		.uleb128 0x1b
+ 231 000a 0E       		.uleb128 0xe
+ 232 000b 55       		.uleb128 0x55
+ 233 000c 17       		.uleb128 0x17
+ 234 000d 11       		.uleb128 0x11
+ 235 000e 01       		.uleb128 0x1
+ 236 000f 10       		.uleb128 0x10
+ 237 0010 17       		.uleb128 0x17
+ 238 0011 00       		.byte	0
+ 239 0012 00       		.byte	0
+ 240 0013 02       		.uleb128 0x2
+ 241 0014 24       		.uleb128 0x24
+ 242 0015 00       		.byte	0
+ 243 0016 0B       		.uleb128 0xb
+ 244 0017 0B       		.uleb128 0xb
+ARM GAS  /tmp/ccaZUzng.s 			page 6
 
 
- 293 0059 08       		.uleb128 0x8
- 294 005a 16       		.uleb128 0x16
- 295 005b 00       		.byte	0
- 296 005c 03       		.uleb128 0x3
- 297 005d 0E       		.uleb128 0xe
- 298 005e 3A       		.uleb128 0x3a
- 299 005f 0B       		.uleb128 0xb
- 300 0060 3B       		.uleb128 0x3b
- 301 0061 05       		.uleb128 0x5
- 302 0062 49       		.uleb128 0x49
- 303 0063 13       		.uleb128 0x13
- 304 0064 00       		.byte	0
- 305 0065 00       		.byte	0
- 306 0066 09       		.uleb128 0x9
- 307 0067 2E       		.uleb128 0x2e
- 308 0068 00       		.byte	0
- 309 0069 03       		.uleb128 0x3
- 310 006a 0E       		.uleb128 0xe
- 311 006b 3A       		.uleb128 0x3a
- 312 006c 0B       		.uleb128 0xb
- 313 006d 3B       		.uleb128 0x3b
- 314 006e 05       		.uleb128 0x5
- 315 006f 27       		.uleb128 0x27
- 316 0070 19       		.uleb128 0x19
- 317 0071 20       		.uleb128 0x20
- 318 0072 0B       		.uleb128 0xb
- 319 0073 00       		.byte	0
- 320 0074 00       		.byte	0
- 321 0075 0A       		.uleb128 0xa
- 322 0076 2E       		.uleb128 0x2e
- 323 0077 00       		.byte	0
- 324 0078 03       		.uleb128 0x3
- 325 0079 0E       		.uleb128 0xe
- 326 007a 3A       		.uleb128 0x3a
- 327 007b 0B       		.uleb128 0xb
- 328 007c 3B       		.uleb128 0x3b
- 329 007d 0B       		.uleb128 0xb
- 330 007e 27       		.uleb128 0x27
- 331 007f 19       		.uleb128 0x19
- 332 0080 20       		.uleb128 0x20
- 333 0081 0B       		.uleb128 0xb
- 334 0082 00       		.byte	0
- 335 0083 00       		.byte	0
- 336 0084 0B       		.uleb128 0xb
- 337 0085 2E       		.uleb128 0x2e
- 338 0086 01       		.byte	0x1
- 339 0087 3F       		.uleb128 0x3f
- 340 0088 19       		.uleb128 0x19
- 341 0089 03       		.uleb128 0x3
- 342 008a 0E       		.uleb128 0xe
- 343 008b 3A       		.uleb128 0x3a
- 344 008c 0B       		.uleb128 0xb
- 345 008d 3B       		.uleb128 0x3b
- 346 008e 0B       		.uleb128 0xb
- 347 008f 49       		.uleb128 0x49
- 348 0090 13       		.uleb128 0x13
- 349 0091 11       		.uleb128 0x11
-ARM GAS  /tmp/ccFq8twJ.s 			page 14
+ 245 0018 3E       		.uleb128 0x3e
+ 246 0019 0B       		.uleb128 0xb
+ 247 001a 03       		.uleb128 0x3
+ 248 001b 0E       		.uleb128 0xe
+ 249 001c 00       		.byte	0
+ 250 001d 00       		.byte	0
+ 251 001e 03       		.uleb128 0x3
+ 252 001f 16       		.uleb128 0x16
+ 253 0020 00       		.byte	0
+ 254 0021 03       		.uleb128 0x3
+ 255 0022 0E       		.uleb128 0xe
+ 256 0023 3A       		.uleb128 0x3a
+ 257 0024 0B       		.uleb128 0xb
+ 258 0025 3B       		.uleb128 0x3b
+ 259 0026 0B       		.uleb128 0xb
+ 260 0027 49       		.uleb128 0x49
+ 261 0028 13       		.uleb128 0x13
+ 262 0029 00       		.byte	0
+ 263 002a 00       		.byte	0
+ 264 002b 04       		.uleb128 0x4
+ 265 002c 24       		.uleb128 0x24
+ 266 002d 00       		.byte	0
+ 267 002e 0B       		.uleb128 0xb
+ 268 002f 0B       		.uleb128 0xb
+ 269 0030 3E       		.uleb128 0x3e
+ 270 0031 0B       		.uleb128 0xb
+ 271 0032 03       		.uleb128 0x3
+ 272 0033 08       		.uleb128 0x8
+ 273 0034 00       		.byte	0
+ 274 0035 00       		.byte	0
+ 275 0036 05       		.uleb128 0x5
+ 276 0037 26       		.uleb128 0x26
+ 277 0038 00       		.byte	0
+ 278 0039 49       		.uleb128 0x49
+ 279 003a 13       		.uleb128 0x13
+ 280 003b 00       		.byte	0
+ 281 003c 00       		.byte	0
+ 282 003d 06       		.uleb128 0x6
+ 283 003e 35       		.uleb128 0x35
+ 284 003f 00       		.byte	0
+ 285 0040 49       		.uleb128 0x49
+ 286 0041 13       		.uleb128 0x13
+ 287 0042 00       		.byte	0
+ 288 0043 00       		.byte	0
+ 289 0044 07       		.uleb128 0x7
+ 290 0045 13       		.uleb128 0x13
+ 291 0046 01       		.byte	0x1
+ 292 0047 0B       		.uleb128 0xb
+ 293 0048 0B       		.uleb128 0xb
+ 294 0049 3A       		.uleb128 0x3a
+ 295 004a 0B       		.uleb128 0xb
+ 296 004b 3B       		.uleb128 0x3b
+ 297 004c 05       		.uleb128 0x5
+ 298 004d 01       		.uleb128 0x1
+ 299 004e 13       		.uleb128 0x13
+ 300 004f 00       		.byte	0
+ 301 0050 00       		.byte	0
+ARM GAS  /tmp/ccaZUzng.s 			page 7
 
 
- 350 0092 01       		.uleb128 0x1
- 351 0093 12       		.uleb128 0x12
- 352 0094 06       		.uleb128 0x6
- 353 0095 40       		.uleb128 0x40
- 354 0096 18       		.uleb128 0x18
- 355 0097 9742     		.uleb128 0x2117
- 356 0099 19       		.uleb128 0x19
- 357 009a 00       		.byte	0
- 358 009b 00       		.byte	0
- 359 009c 0C       		.uleb128 0xc
- 360 009d 1D       		.uleb128 0x1d
- 361 009e 00       		.byte	0
- 362 009f 31       		.uleb128 0x31
- 363 00a0 13       		.uleb128 0x13
- 364 00a1 11       		.uleb128 0x11
- 365 00a2 01       		.uleb128 0x1
- 366 00a3 12       		.uleb128 0x12
- 367 00a4 06       		.uleb128 0x6
- 368 00a5 58       		.uleb128 0x58
- 369 00a6 0B       		.uleb128 0xb
- 370 00a7 59       		.uleb128 0x59
- 371 00a8 0B       		.uleb128 0xb
- 372 00a9 00       		.byte	0
- 373 00aa 00       		.byte	0
- 374 00ab 00       		.byte	0
- 375              		.section	.debug_aranges,"",%progbits
- 376 0000 1C000000 		.4byte	0x1c
- 377 0004 0200     		.2byte	0x2
- 378 0006 00000000 		.4byte	.Ldebug_info0
- 379 000a 04       		.byte	0x4
- 380 000b 00       		.byte	0
- 381 000c 0000     		.2byte	0
- 382 000e 0000     		.2byte	0
- 383 0010 00000000 		.4byte	.LFB34
- 384 0014 14000000 		.4byte	.LFE34-.LFB34
- 385 0018 00000000 		.4byte	0
- 386 001c 00000000 		.4byte	0
- 387              		.section	.debug_ranges,"",%progbits
- 388              	.Ldebug_ranges0:
- 389 0000 00000000 		.4byte	.LFB34
- 390 0004 14000000 		.4byte	.LFE34
- 391 0008 00000000 		.4byte	0
- 392 000c 00000000 		.4byte	0
- 393              		.section	.debug_line,"",%progbits
- 394              	.Ldebug_line0:
- 395 0000 A9000000 		.section	.debug_str,"MS",%progbits,1
- 395      02008000 
- 395      00000201 
- 395      FB0E0D00 
- 395      01010101 
- 396              	.LASF3:
- 397 0000 6C6F6E67 		.ascii	"long long int\000"
- 397      206C6F6E 
- 397      6720696E 
- 397      7400
- 398              	.LASF8:
- 399 000e 756E7369 		.ascii	"unsigned int\000"
-ARM GAS  /tmp/ccFq8twJ.s 			page 15
+ 302 0051 08       		.uleb128 0x8
+ 303 0052 0D       		.uleb128 0xd
+ 304 0053 00       		.byte	0
+ 305 0054 03       		.uleb128 0x3
+ 306 0055 0E       		.uleb128 0xe
+ 307 0056 3A       		.uleb128 0x3a
+ 308 0057 0B       		.uleb128 0xb
+ 309 0058 3B       		.uleb128 0x3b
+ 310 0059 05       		.uleb128 0x5
+ 311 005a 49       		.uleb128 0x49
+ 312 005b 13       		.uleb128 0x13
+ 313 005c 38       		.uleb128 0x38
+ 314 005d 0B       		.uleb128 0xb
+ 315 005e 00       		.byte	0
+ 316 005f 00       		.byte	0
+ 317 0060 09       		.uleb128 0x9
+ 318 0061 16       		.uleb128 0x16
+ 319 0062 00       		.byte	0
+ 320 0063 03       		.uleb128 0x3
+ 321 0064 0E       		.uleb128 0xe
+ 322 0065 3A       		.uleb128 0x3a
+ 323 0066 0B       		.uleb128 0xb
+ 324 0067 3B       		.uleb128 0x3b
+ 325 0068 05       		.uleb128 0x5
+ 326 0069 49       		.uleb128 0x49
+ 327 006a 13       		.uleb128 0x13
+ 328 006b 00       		.byte	0
+ 329 006c 00       		.byte	0
+ 330 006d 0A       		.uleb128 0xa
+ 331 006e 2E       		.uleb128 0x2e
+ 332 006f 01       		.byte	0x1
+ 333 0070 3F       		.uleb128 0x3f
+ 334 0071 19       		.uleb128 0x19
+ 335 0072 03       		.uleb128 0x3
+ 336 0073 0E       		.uleb128 0xe
+ 337 0074 3A       		.uleb128 0x3a
+ 338 0075 0B       		.uleb128 0xb
+ 339 0076 3B       		.uleb128 0x3b
+ 340 0077 0B       		.uleb128 0xb
+ 341 0078 49       		.uleb128 0x49
+ 342 0079 13       		.uleb128 0x13
+ 343 007a 11       		.uleb128 0x11
+ 344 007b 01       		.uleb128 0x1
+ 345 007c 12       		.uleb128 0x12
+ 346 007d 06       		.uleb128 0x6
+ 347 007e 40       		.uleb128 0x40
+ 348 007f 18       		.uleb128 0x18
+ 349 0080 9742     		.uleb128 0x2117
+ 350 0082 19       		.uleb128 0x19
+ 351 0083 00       		.byte	0
+ 352 0084 00       		.byte	0
+ 353 0085 0B       		.uleb128 0xb
+ 354 0086 34       		.uleb128 0x34
+ 355 0087 00       		.byte	0
+ 356 0088 03       		.uleb128 0x3
+ 357 0089 0E       		.uleb128 0xe
+ 358 008a 3A       		.uleb128 0x3a
+ARM GAS  /tmp/ccaZUzng.s 			page 8
 
 
- 399      676E6564 
- 399      20696E74 
+ 359 008b 0B       		.uleb128 0xb
+ 360 008c 3B       		.uleb128 0x3b
+ 361 008d 0B       		.uleb128 0xb
+ 362 008e 49       		.uleb128 0x49
+ 363 008f 13       		.uleb128 0x13
+ 364 0090 02       		.uleb128 0x2
+ 365 0091 18       		.uleb128 0x18
+ 366 0092 00       		.byte	0
+ 367 0093 00       		.byte	0
+ 368 0094 00       		.byte	0
+ 369              		.section	.debug_aranges,"",%progbits
+ 370 0000 1C000000 		.4byte	0x1c
+ 371 0004 0200     		.2byte	0x2
+ 372 0006 00000000 		.4byte	.Ldebug_info0
+ 373 000a 04       		.byte	0x4
+ 374 000b 00       		.byte	0
+ 375 000c 0000     		.2byte	0
+ 376 000e 0000     		.2byte	0
+ 377 0010 00000000 		.4byte	.LFB34
+ 378 0014 40000000 		.4byte	.LFE34-.LFB34
+ 379 0018 00000000 		.4byte	0
+ 380 001c 00000000 		.4byte	0
+ 381              		.section	.debug_ranges,"",%progbits
+ 382              	.Ldebug_ranges0:
+ 383 0000 00000000 		.4byte	.LFB34
+ 384 0004 40000000 		.4byte	.LFE34
+ 385 0008 00000000 		.4byte	0
+ 386 000c 00000000 		.4byte	0
+ 387              		.section	.debug_line,"",%progbits
+ 388              	.Ldebug_line0:
+ 389 0000 8F000000 		.section	.debug_str,"MS",%progbits,1
+ 389      02006F00 
+ 389      00000201 
+ 389      FB0E0D00 
+ 389      01010101 
+ 390              	.LASF3:
+ 391 0000 6C6F6E67 		.ascii	"long long int\000"
+ 391      206C6F6E 
+ 391      6720696E 
+ 391      7400
+ 392              	.LASF16:
+ 393 000e 50494452 		.ascii	"PIDR\000"
+ 393      00
+ 394              	.LASF8:
+ 395 0013 756E7369 		.ascii	"unsigned int\000"
+ 395      676E6564 
+ 395      20696E74 
+ 395      00
+ 396              	.LASF12:
+ 397 0020 50434F52 		.ascii	"PCOR\000"
+ 397      00
+ 398              	.LASF13:
+ 399 0025 50544F52 		.ascii	"PTOR\000"
  399      00
- 400              	.LASF12:
- 401 001b 5F5F656E 		.ascii	"__enable_irq\000"
- 401      61626C65 
- 401      5F697271 
- 401      00
- 402              	.LASF10:
- 403 0028 75696E74 		.ascii	"uint8_t\000"
- 403      385F7400 
- 404              	.LASF6:
- 405 0030 6C6F6E67 		.ascii	"long unsigned int\000"
- 405      20756E73 
- 405      69676E65 
- 405      6420696E 
- 405      7400
- 406              	.LASF7:
- 407 0042 6C6F6E67 		.ascii	"long long unsigned int\000"
- 407      206C6F6E 
- 407      6720756E 
- 407      7369676E 
- 407      65642069 
- 408              	.LASF15:
- 409 0059 7372632F 		.ascii	"src/main.c\000"
- 409      6D61696E 
- 409      2E6300
- 410              	.LASF14:
- 411 0064 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mthumb -mcpu=cor"
- 411      4320342E 
- 411      392E3320 
- 411      32303135 
- 411      30353239 
- 412 0097 7465782D 		.ascii	"tex-m0plus -g -Os -fno-common -ffreestanding -fno-b"
- 412      6D30706C 
- 412      7573202D 
- 412      67202D4F 
- 412      73202D66 
- 413 00ca 75696C74 		.ascii	"uiltin\000"
- 413      696E00
- 414              	.LASF4:
- 415 00d1 756E7369 		.ascii	"unsigned char\000"
- 415      676E6564 
- 415      20636861 
- 415      7200
- 416              	.LASF17:
- 417 00df 6D61696E 		.ascii	"main\000"
+ 400              	.LASF6:
+ 401 002a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 401      20756E73 
+ARM GAS  /tmp/ccaZUzng.s 			page 9
+
+
+ 401      69676E65 
+ 401      6420696E 
+ 401      7400
+ 402              	.LASF7:
+ 403 003c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 403      206C6F6E 
+ 403      6720756E 
+ 403      7369676E 
+ 403      65642069 
+ 404              	.LASF20:
+ 405 0053 7372632F 		.ascii	"src/main.c\000"
+ 405      6D61696E 
+ 405      2E6300
+ 406              	.LASF19:
+ 407 005e 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mthumb -mcpu=cor"
+ 407      4320342E 
+ 407      392E3320 
+ 407      32303135 
+ 407      30353239 
+ 408 0091 7465782D 		.ascii	"tex-m0plus -g -Os -fno-common -ffreestanding -fno-b"
+ 408      6D30706C 
+ 408      7573202D 
+ 408      67202D4F 
+ 408      73202D66 
+ 409 00c4 75696C74 		.ascii	"uiltin\000"
+ 409      696E00
+ 410              	.LASF4:
+ 411 00cb 756E7369 		.ascii	"unsigned char\000"
+ 411      676E6564 
+ 411      20636861 
+ 411      7200
+ 412              	.LASF23:
+ 413 00d9 736F4661 		.ascii	"soFar\000"
+ 413      7200
+ 414              	.LASF22:
+ 415 00df 6D61696E 		.ascii	"main\000"
+ 415      00
+ 416              	.LASF11:
+ 417 00e4 50534F52 		.ascii	"PSOR\000"
  417      00
  418              	.LASF2:
- 419 00e4 6C6F6E67 		.ascii	"long int\000"
+ 419 00e9 6C6F6E67 		.ascii	"long int\000"
  419      20696E74 
  419      00
- 420              	.LASF13:
- 421 00ed 6963735F 		.ascii	"ics_setup\000"
- 421      73657475 
- 421      7000
- 422              	.LASF5:
-ARM GAS  /tmp/ccFq8twJ.s 			page 16
+ 420              	.LASF15:
+ 421 00f2 50444452 		.ascii	"PDDR\000"
+ 421      00
+ 422              	.LASF17:
+ 423 00f7 75696E74 		.ascii	"uint32_t\000"
+ 423      33325F74 
+ 423      00
+ 424              	.LASF10:
+ 425 0100 50444F52 		.ascii	"PDOR\000"
+ 425      00
+ 426              	.LASF5:
+ 427 0105 73686F72 		.ascii	"short unsigned int\000"
+ 427      7420756E 
+ARM GAS  /tmp/ccaZUzng.s 			page 10
 
 
- 423 00f7 73686F72 		.ascii	"short unsigned int\000"
- 423      7420756E 
- 423      7369676E 
- 423      65642069 
- 423      6E7400
- 424              	.LASF0:
- 425 010a 7369676E 		.ascii	"signed char\000"
- 425      65642063 
- 425      68617200 
- 426              	.LASF11:
- 427 0116 4943535F 		.ascii	"ICS_Type\000"
- 427      54797065 
- 427      00
- 428              	.LASF1:
- 429 011f 73686F72 		.ascii	"short int\000"
- 429      7420696E 
- 429      7400
- 430              	.LASF9:
- 431 0129 73697A65 		.ascii	"sizetype\000"
- 431      74797065 
- 431      00
- 432              	.LASF16:
- 433 0132 2F686F6D 		.ascii	"/home/xxx/projects/armmke_dev1/firmware\000"
- 433      652F7878 
- 433      782F7072 
- 433      6F6A6563 
- 433      74732F61 
- 434              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccFq8twJ.s 			page 17
+ 427      7369676E 
+ 427      65642069 
+ 427      6E7400
+ 428              	.LASF0:
+ 429 0118 7369676E 		.ascii	"signed char\000"
+ 429      65642063 
+ 429      68617200 
+ 430              	.LASF18:
+ 431 0124 4750494F 		.ascii	"GPIO_Type\000"
+ 431      5F547970 
+ 431      6500
+ 432              	.LASF14:
+ 433 012e 50444952 		.ascii	"PDIR\000"
+ 433      00
+ 434              	.LASF1:
+ 435 0133 73686F72 		.ascii	"short int\000"
+ 435      7420696E 
+ 435      7400
+ 436              	.LASF9:
+ 437 013d 73697A65 		.ascii	"sizetype\000"
+ 437      74797065 
+ 437      00
+ 438              	.LASF21:
+ 439 0146 2F686F6D 		.ascii	"/home/xxx/projects/armmke_dev1/firmware\000"
+ 439      652F7878 
+ 439      782F7072 
+ 439      6F6A6563 
+ 439      74732F61 
+ 440              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
+ARM GAS  /tmp/ccaZUzng.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccFq8twJ.s:18     .text.startup:0000000000000000 $t
-     /tmp/ccFq8twJ.s:23     .text.startup:0000000000000000 main
-     /tmp/ccFq8twJ.s:55     .text.startup:0000000000000010 $d
+     /tmp/ccaZUzng.s:18     .text.startup:0000000000000000 $t
+     /tmp/ccaZUzng.s:23     .text.startup:0000000000000000 main
+     /tmp/ccaZUzng.s:71     .text.startup:0000000000000038 $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

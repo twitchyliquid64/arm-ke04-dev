@@ -1,0 +1,8 @@
+device MKE04Z8xxx4
+sleep 500
+r
+h
+sleep 500
+loadbin bin/firmware.bin, 0x0
+verifybin bin/firmware.bin, 0x0
+setPC 0x1fffffd0
