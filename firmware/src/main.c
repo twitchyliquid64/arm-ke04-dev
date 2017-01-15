@@ -36,7 +36,7 @@ int main()
     while (1)
     {
         soFar++;
-        if (soFar > 999999){
+        if (soFar > 1714285){
           GPIOA->PTOR |= 1 << 17;
           soFar = 0;
         }

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccaZUzng.s 			page 1
+ARM GAS  /tmp/ccB6j07C.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
   28:src/main.c    **** 
   29:src/main.c    ****     //__enable_irq(); //Whats this for
   30:src/main.c    **** 
-ARM GAS  /tmp/ccaZUzng.s 			page 2
+ARM GAS  /tmp/ccB6j07C.s 			page 2
 
 
   31:src/main.c    ****     GPIOA->PIDR |= 1 << 17;
@@ -98,7 +98,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
   53 001e 019A     		ldr	r2, [sp, #4]
   54 0020 0132     		add	r2, r2, #1
   55 0022 0192     		str	r2, [sp, #4]
-  39:src/main.c    ****         if (soFar > 999999){
+  39:src/main.c    ****         if (soFar > 1714285){
   56              		.loc 1 39 0
   57 0024 0199     		ldr	r1, [sp, #4]
   58 0026 054A     		ldr	r2, .L6+4
@@ -116,9 +116,9 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
   69              		.align	2
   70              	.L6:
   71 0038 00F00F40 		.word	1074786304
-  72 003c 3F420F00 		.word	999999
+  72 003c 6D281A00 		.word	1714285
   73              		.cfi_endproc
-ARM GAS  /tmp/ccaZUzng.s 			page 3
+ARM GAS  /tmp/ccB6j07C.s 			page 3
 
 
   74              	.LFE34:
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  128 0062 08       		.byte	0x8
  129 0063 07       		.byte	0x7
  130 0064 3C000000 		.4byte	.LASF7
-ARM GAS  /tmp/ccaZUzng.s 			page 4
+ARM GAS  /tmp/ccB6j07C.s 			page 4
 
 
  131 0068 04       		.uleb128 0x4
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  185 00d7 9E04     		.2byte	0x49e
  186 00d9 82000000 		.4byte	0x82
  187 00dd 14       		.byte	0x14
-ARM GAS  /tmp/ccaZUzng.s 			page 5
+ARM GAS  /tmp/ccB6j07C.s 			page 5
 
 
  188 00de 08       		.uleb128 0x8
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  242 0015 00       		.byte	0
  243 0016 0B       		.uleb128 0xb
  244 0017 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccaZUzng.s 			page 6
+ARM GAS  /tmp/ccB6j07C.s 			page 6
 
 
  245 0018 3E       		.uleb128 0x3e
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  299 004e 13       		.uleb128 0x13
  300 004f 00       		.byte	0
  301 0050 00       		.byte	0
-ARM GAS  /tmp/ccaZUzng.s 			page 7
+ARM GAS  /tmp/ccB6j07C.s 			page 7
 
 
  302 0051 08       		.uleb128 0x8
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  356 0088 03       		.uleb128 0x3
  357 0089 0E       		.uleb128 0xe
  358 008a 3A       		.uleb128 0x3a
-ARM GAS  /tmp/ccaZUzng.s 			page 8
+ARM GAS  /tmp/ccB6j07C.s 			page 8
 
 
  359 008b 0B       		.uleb128 0xb
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  400              	.LASF6:
  401 002a 6C6F6E67 		.ascii	"long unsigned int\000"
  401      20756E73 
-ARM GAS  /tmp/ccaZUzng.s 			page 9
+ARM GAS  /tmp/ccB6j07C.s 			page 9
 
 
  401      69676E65 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  426              	.LASF5:
  427 0105 73686F72 		.ascii	"short unsigned int\000"
  427      7420756E 
-ARM GAS  /tmp/ccaZUzng.s 			page 10
+ARM GAS  /tmp/ccB6j07C.s 			page 10
 
 
  427      7369676E 
@@ -570,14 +570,14 @@ ARM GAS  /tmp/ccaZUzng.s 			page 1
  439      6F6A6563 
  439      74732F61 
  440              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccaZUzng.s 			page 11
+ARM GAS  /tmp/ccB6j07C.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccaZUzng.s:18     .text.startup:0000000000000000 $t
-     /tmp/ccaZUzng.s:23     .text.startup:0000000000000000 main
-     /tmp/ccaZUzng.s:71     .text.startup:0000000000000038 $d
+     /tmp/ccB6j07C.s:18     .text.startup:0000000000000000 $t
+     /tmp/ccB6j07C.s:23     .text.startup:0000000000000000 main
+     /tmp/ccB6j07C.s:71     .text.startup:0000000000000038 $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS
