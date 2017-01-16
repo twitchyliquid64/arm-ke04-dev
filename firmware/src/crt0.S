@@ -103,6 +103,26 @@
     .global _startup
 Reset_Handler:
 _startup:
+    // Disable the watchdog
+    // We have to write to all regs except WIN
+    ldr r0, =0x40052002 //Address of WDOG_CNT
+    ldr r1, =0x20C5     //First unlock word
+    strh r1,[r0]
+    ldr r1, =0x28D9     //Second unlock word
+    strh r1,[r0]
+
+    ldr r0, =0x40052000 //set CS1 to 0 (disable)
+    ldr r1, =0x0
+    strb r1,[r0]
+
+    ldr r0, =0x40052001 //Address of CS2
+    ldr r1, =0x01 //Defaults - leave it on 1Khz clock
+    strb r1,[r0]
+
+    ldr r0, =0x40052004 //Address of WDOG_TOVAL
+    ldr r1, =0x1
+    strh r1,[r0]
+
     /* Initialize GPRs */
     ldr r0,=0
     ldr r1,=0
@@ -113,20 +133,7 @@ _startup:
     ldr r6,=0
     ldr r7,=0
 
-    /* Write the address of the IVT into 0xE000ED08 */
-    //dont do this anymore as we are exclusively in flash
-    //ldr r0, =0xE000ED08
-    //ldr r1, =__interrupt_vector_table
-    //str r1,[r0]
 
-    /* Pet the dog */
-    //TODO: FIX THIS IF YOU CAN
-    //cpsid i
-    //ldr r0, =0x40052002
-    //ldr r1, =0x02A6
-    //strh r1,[r0]
-    //ldr r1, =0x80B4
-    //strh r1,[r0]
 
     /* Handoff to C startup */
     ldr r0,=startup

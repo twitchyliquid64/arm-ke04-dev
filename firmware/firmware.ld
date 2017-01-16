@@ -43,9 +43,11 @@ SECTIONS
     .flash_at_rest_ram_at_run :
     {
         . = ALIGN(4);
+        _start_data = .;
         *(.data)
         *(.data.*)
         *(.shdata)
+        _end_data = .;
     } > sram AT>flash
 
     .ram_only :
@@ -58,6 +60,9 @@ SECTIONS
     } > sram
 
     _bss_size = _end_bss - _start_bss;
+    /* TODO: Copy DATA section into RAM */
+    _data_size = _end_data - _start_data;
+    _data_flash_addr = LOADADDR(.flash_at_rest_ram_at_run);
 
     _start_stack = _top_stack - TOTAL_RESERVED_STACK;
     _top_stack = _top_stack;			/* just to make the map file easier to read */

@@ -24,7 +24,7 @@ static void ics_setup(void)
 int main()
 {
     //set up the clock to our known 48MHz frequency
-    //ics_setup();
+    ics_setup();
 
     //__enable_irq(); //Whats this for
 

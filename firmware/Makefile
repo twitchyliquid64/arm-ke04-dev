@@ -64,6 +64,14 @@ p_stack: $(BINDIR)/$(PROJECT).elf
 flash: flat
 	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -CommandFile flash.jlink -If SWD -Speed 500
 
+#Prints the disassembly.
+disasm: flat
+	$(OBJDUMP) -d $(BINDIR)/$(PROJECT).elf
+
+#Opens a JLink terminal
+jlink:
+	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -If SWD -Speed 500
+
 list: $(BINDIR)/$(PROJECT).elf
 	$(OBJDUMP) -D $(BINDIR)/$(PROJECT).elf > $(BINDIR)/$(PROJECT).lst
 

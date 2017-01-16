@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 
-extern uint32_t _start_bss, _end_bss;
+extern uint32_t _start_bss, _end_bss, _start_data, _data_size, _data_flash_addr;
 
 void startup()
 {

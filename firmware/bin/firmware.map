@@ -18,7 +18,7 @@ END GROUP
                 0x0000000000000080                TOTAL_RESERVED_STACK = 0x80
                 0x0000000020000300                _top_stack = 0x20000300
 
-.flashonly      0x0000000000000000      0x158
+.flashonly      0x0000000000000000      0x19c
                 0x0000000000000000                __interrupt_vector_table = .
  *(.interrupt_vector_table)
  .interrupt_vector_table
@@ -28,74 +28,76 @@ END GROUP
                 0x00000000000000c0       0x10 obj/crt0.o
                 0x00000000000000d0                . = ALIGN (0x4)
  *(.startup)
- .startup       0x00000000000000d0       0x28 obj/crt0.o
+ .startup       0x00000000000000d0       0x5c obj/crt0.o
                 0x00000000000000d0                _startup
-                0x00000000000000e6                NMI_Handler
-                0x00000000000000e8                HardFault_Handler
-                0x00000000000000ea                SVC_Handler
-                0x00000000000000ec                PendSV_Handler
-                0x00000000000000ee                SysTick_Handler
-                0x00000000000000f0                I2C0_IRQHandler
-                0x00000000000000f0                UART0_IRQHandler
-                0x00000000000000f0                ADC0_IRQHandler
-                0x00000000000000f0                FTMRE_IRQHandler
-                0x00000000000000f0                RTC_IRQHandler
-                0x00000000000000f0                IRQ_IRQHandler
-                0x00000000000000f0                PIT_CH0_IRQHandler
-                0x00000000000000f0                ACMP0_IRQHandler
-                0x00000000000000f0                PWT_IRQHandler
-                0x00000000000000f0                ICS_IRQHandler
-                0x00000000000000f0                PIT_CH1_IRQHandler
-                0x00000000000000f0                KBI0_IRQHandler
-                0x00000000000000f0                PMC_IRQHandler
-                0x00000000000000f0                SPI0_IRQHandler
-                0x00000000000000f0                FTM0_IRQHandler
-                0x00000000000000f0                WDOG_IRQHandler
-                0x00000000000000f0                FTM2_IRQHandler
-                0x00000000000000f0                ACMP1_IRQHandler
-                0x00000000000000f0                KBI1_IRQHandler
+                0x0000000000000102                NMI_Handler
+                0x0000000000000104                HardFault_Handler
+                0x0000000000000106                SVC_Handler
+                0x0000000000000108                PendSV_Handler
+                0x000000000000010a                SysTick_Handler
+                0x000000000000010c                I2C0_IRQHandler
+                0x000000000000010c                UART0_IRQHandler
+                0x000000000000010c                ADC0_IRQHandler
+                0x000000000000010c                FTMRE_IRQHandler
+                0x000000000000010c                RTC_IRQHandler
+                0x000000000000010c                IRQ_IRQHandler
+                0x000000000000010c                PIT_CH0_IRQHandler
+                0x000000000000010c                ACMP0_IRQHandler
+                0x000000000000010c                PWT_IRQHandler
+                0x000000000000010c                ICS_IRQHandler
+                0x000000000000010c                PIT_CH1_IRQHandler
+                0x000000000000010c                KBI0_IRQHandler
+                0x000000000000010c                PMC_IRQHandler
+                0x000000000000010c                SPI0_IRQHandler
+                0x000000000000010c                FTM0_IRQHandler
+                0x000000000000010c                WDOG_IRQHandler
+                0x000000000000010c                FTM2_IRQHandler
+                0x000000000000010c                ACMP1_IRQHandler
+                0x000000000000010c                KBI1_IRQHandler
  *(.text)
- .text          0x00000000000000f8        0x0 obj/main.o
- .text          0x00000000000000f8       0x20 obj/startup.o
-                0x00000000000000f8                startup
- .text          0x0000000000000118        0x0 obj/crt0.o
+ .text          0x000000000000012c        0x0 obj/main.o
+ .text          0x000000000000012c       0x20 obj/startup.o
+                0x000000000000012c                startup
+ .text          0x000000000000014c        0x0 obj/crt0.o
  *(.text.*)
- .text.startup  0x0000000000000118       0x40 obj/main.o
-                0x0000000000000118                main
+ .text.startup  0x000000000000014c       0x50 obj/main.o
+                0x000000000000014c                main
  *(.glue_7)
- .glue_7        0x0000000000000158        0x0 linker stubs
+ .glue_7        0x000000000000019c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000000000158        0x0 linker stubs
-                0x0000000000000158                . = ALIGN (0x4)
+ .glue_7t       0x000000000000019c        0x0 linker stubs
+                0x000000000000019c                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
 
-.vfp11_veneer   0x0000000000000158        0x0
- .vfp11_veneer  0x0000000000000158        0x0 linker stubs
+.vfp11_veneer   0x000000000000019c        0x0
+ .vfp11_veneer  0x000000000000019c        0x0 linker stubs
 
-.v4_bx          0x0000000000000158        0x0
- .v4_bx         0x0000000000000158        0x0 linker stubs
+.v4_bx          0x000000000000019c        0x0
+ .v4_bx         0x000000000000019c        0x0 linker stubs
 
-.iplt           0x0000000000000158        0x0
- .iplt          0x0000000000000158        0x0 obj/main.o
+.iplt           0x000000000000019c        0x0
+ .iplt          0x000000000000019c        0x0 obj/main.o
 
-.igot.plt       0x0000000000000158        0x0
- .igot.plt      0x0000000000000158        0x0 obj/main.o
+.igot.plt       0x000000000000019c        0x0
+ .igot.plt      0x000000000000019c        0x0 obj/main.o
 
-.rel.dyn        0x0000000000000158        0x0
- .rel.iplt      0x0000000000000158        0x0 obj/main.o
+.rel.dyn        0x000000000000019c        0x0
+ .rel.iplt      0x000000000000019c        0x0 obj/main.o
 
 .flash_at_rest_ram_at_run
-                0x000000001fffff00        0x0 load address 0x0000000000000158
+                0x000000001fffff00        0x0 load address 0x000000000000019c
                 0x000000001fffff00                . = ALIGN (0x4)
+                0x000000001fffff00                _start_data = .
  *(.data)
  .data          0x000000001fffff00        0x0 obj/main.o
  .data          0x000000001fffff00        0x0 obj/startup.o
  .data          0x000000001fffff00        0x0 obj/crt0.o
  *(.data.*)
  *(.shdata)
+                0x000000001fffff00                _end_data = .
 
-.ram_only       0x000000001fffff00        0x0 load address 0x0000000000000158
+.ram_only       0x000000001fffff00        0x0 load address 0x000000000000019c
                 0x000000001fffff00                . = ALIGN (0x4)
                 0x000000001fffff00                _start_bss = .
  *(.bss)
@@ -105,17 +107,19 @@ END GROUP
  *(.bss.*)
                 0x000000001fffff00                _end_bss = .
                 0x0000000000000000                _bss_size = (_end_bss - _start_bss)
+                0x0000000000000000                _data_size = (_end_data - _start_data)
+                0x000000000000019c                _data_flash_addr = LOADADDR (.flash_at_rest_ram_at_run)
                 0x0000000020000280                _start_stack = (_top_stack - TOTAL_RESERVED_STACK)
                 [0x0000000020000300]                _top_stack = _top_stack
 OUTPUT(bin/firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000      0x1fc
- .debug_info    0x0000000000000000      0x11d obj/main.o
- .debug_info    0x000000000000011d       0xdf obj/startup.o
+.debug_info     0x0000000000000000      0x274
+ .debug_info    0x0000000000000000      0x195 obj/main.o
+ .debug_info    0x0000000000000195       0xdf obj/startup.o
 
-.debug_abbrev   0x0000000000000000      0x141
- .debug_abbrev  0x0000000000000000       0x95 obj/main.o
- .debug_abbrev  0x0000000000000095       0xac obj/startup.o
+.debug_abbrev   0x0000000000000000      0x16e
+ .debug_abbrev  0x0000000000000000       0xc2 obj/main.o
+ .debug_abbrev  0x00000000000000c2       0xac obj/startup.o
 
 .debug_aranges  0x0000000000000000       0x40
  .debug_aranges
@@ -123,17 +127,17 @@ OUTPUT(bin/firmware.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000020       0x20 obj/startup.o
 
-.debug_ranges   0x0000000000000000       0x10
- .debug_ranges  0x0000000000000000       0x10 obj/main.o
+.debug_ranges   0x0000000000000000       0x30
+ .debug_ranges  0x0000000000000000       0x30 obj/main.o
 
-.debug_line     0x0000000000000000      0x118
- .debug_line    0x0000000000000000       0x93 obj/main.o
- .debug_line    0x0000000000000093       0x85 obj/startup.o
+.debug_line     0x0000000000000000      0x12c
+ .debug_line    0x0000000000000000       0xa7 obj/main.o
+ .debug_line    0x00000000000000a7       0x85 obj/startup.o
 
-.debug_str      0x0000000000000000      0x169
- .debug_str     0x0000000000000000      0x13a obj/main.o
-                                        0x16e (size before relaxing)
- .debug_str     0x000000000000013a       0x2f obj/startup.o
+.debug_str      0x0000000000000000      0x184
+ .debug_str     0x0000000000000000      0x155 obj/main.o
+                                        0x189 (size before relaxing)
+ .debug_str     0x0000000000000155       0x2f obj/startup.o
                                         0x156 (size before relaxing)
 
 .comment        0x0000000000000000       0x38
