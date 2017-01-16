@@ -114,9 +114,10 @@ _startup:
     ldr r7,=0
 
     /* Write the address of the IVT into 0xE000ED08 */
-    ldr r0, =0xE000ED08
-    ldr r1, =__interrupt_vector_table
-    str r1,[r0]
+    //dont do this anymore as we are exclusively in flash
+    //ldr r0, =0xE000ED08
+    //ldr r1, =__interrupt_vector_table
+    //str r1,[r0]
 
     /* Pet the dog */
     //TODO: FIX THIS IF YOU CAN

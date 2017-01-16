@@ -6,15 +6,11 @@ OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
 ENTRY(_startup)
 
-/**
- * KE04 Reference Manual 3.7.3.2 & Table 4-1
- * "The on-chip SRAM is split into two ranges; 1/4 is allocated to SRAM_L and 3/4 is allocated to SRAM_U."
- *
- * All KE04 devices have 1KB of RAM
- */
+
 MEMORY
 {
     sram(WX) : ORIGIN = 0x1FFFFF00, LENGTH = 1K
+    flash : org = 0x00000000, len = 6k
 }
 
 /**
@@ -27,7 +23,7 @@ EXTERN(__interrupt_vector_table);
 
 SECTIONS
 {
-    .all :
+    .flashonly :
     {
         __interrupt_vector_table = .;
         *(.interrupt_vector_table)
@@ -42,15 +38,23 @@ SECTIONS
         . = ALIGN(4);
         *(.rodata)
         *(.rodata*)
+    } > flash
+
+    .flash_at_rest_ram_at_run :
+    {
+        . = ALIGN(4);
         *(.data)
         *(.data.*)
         *(.shdata)
+    } > sram AT>flash
+
+    .ram_only :
+    {
         . = ALIGN(4);
         _start_bss = .;
         *(.bss)
         *(.bss.*)
         _end_bss = .;
-
     } > sram
 
     _bss_size = _end_bss - _start_bss;

@@ -64,11 +64,6 @@ p_stack: $(BINDIR)/$(PROJECT).elf
 flash: flat
 	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -CommandFile flash.jlink -If SWD -Speed 500
 
-#Writes the firmware into a connected devices RAM.
-#NOTE: Assumes the device already has a IVT setup in flash with the correct stack.
-test: flat
-	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -CommandFile test.jlink -If SWD -Speed 500
-
 list: $(BINDIR)/$(PROJECT).elf
 	$(OBJDUMP) -D $(BINDIR)/$(PROJECT).elf > $(BINDIR)/$(PROJECT).lst
 

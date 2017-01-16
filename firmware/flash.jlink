@@ -5,4 +5,4 @@ h
 sleep 500
 loadbin bin/firmware.bin, 0x0
 verifybin bin/firmware.bin, 0x0
-setPC 0x1fffffd0
+setPC 0x000000d0

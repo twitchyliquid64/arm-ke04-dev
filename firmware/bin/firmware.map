@@ -3,6 +3,7 @@ Memory Configuration
 
 Name             Origin             Length             Attributes
 sram             0x000000001fffff00 0x0000000000000400 xw
+flash            0x0000000000000000 0x0000000000001800
 *default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
@@ -17,90 +18,96 @@ END GROUP
                 0x0000000000000080                TOTAL_RESERVED_STACK = 0x80
                 0x0000000020000300                _top_stack = 0x20000300
 
-.all            0x000000001fffff00      0x164
-                0x000000001fffff00                __interrupt_vector_table = .
+.flashonly      0x0000000000000000      0x158
+                0x0000000000000000                __interrupt_vector_table = .
  *(.interrupt_vector_table)
  .interrupt_vector_table
-                0x000000001fffff00       0xc0 obj/crt0.o
+                0x0000000000000000       0xc0 obj/crt0.o
  *(.unsecured_config)
  .unsecured_config
-                0x000000001fffffc0       0x10 obj/crt0.o
-                0x000000001fffffd0                . = ALIGN (0x4)
+                0x00000000000000c0       0x10 obj/crt0.o
+                0x00000000000000d0                . = ALIGN (0x4)
  *(.startup)
- .startup       0x000000001fffffd0       0x34 obj/crt0.o
-                0x000000001fffffd0                _startup
-                0x000000001fffffec                NMI_Handler
-                0x000000001fffffee                HardFault_Handler
-                0x000000001ffffff0                SVC_Handler
-                0x000000001ffffff2                PendSV_Handler
-                0x000000001ffffff4                SysTick_Handler
-                0x000000001ffffff6                I2C0_IRQHandler
-                0x000000001ffffff6                UART0_IRQHandler
-                0x000000001ffffff6                ADC0_IRQHandler
-                0x000000001ffffff6                FTMRE_IRQHandler
-                0x000000001ffffff6                RTC_IRQHandler
-                0x000000001ffffff6                IRQ_IRQHandler
-                0x000000001ffffff6                PIT_CH0_IRQHandler
-                0x000000001ffffff6                ACMP0_IRQHandler
-                0x000000001ffffff6                PWT_IRQHandler
-                0x000000001ffffff6                ICS_IRQHandler
-                0x000000001ffffff6                PIT_CH1_IRQHandler
-                0x000000001ffffff6                KBI0_IRQHandler
-                0x000000001ffffff6                PMC_IRQHandler
-                0x000000001ffffff6                SPI0_IRQHandler
-                0x000000001ffffff6                FTM0_IRQHandler
-                0x000000001ffffff6                WDOG_IRQHandler
-                0x000000001ffffff6                FTM2_IRQHandler
-                0x000000001ffffff6                ACMP1_IRQHandler
-                0x000000001ffffff6                KBI1_IRQHandler
+ .startup       0x00000000000000d0       0x28 obj/crt0.o
+                0x00000000000000d0                _startup
+                0x00000000000000e6                NMI_Handler
+                0x00000000000000e8                HardFault_Handler
+                0x00000000000000ea                SVC_Handler
+                0x00000000000000ec                PendSV_Handler
+                0x00000000000000ee                SysTick_Handler
+                0x00000000000000f0                I2C0_IRQHandler
+                0x00000000000000f0                UART0_IRQHandler
+                0x00000000000000f0                ADC0_IRQHandler
+                0x00000000000000f0                FTMRE_IRQHandler
+                0x00000000000000f0                RTC_IRQHandler
+                0x00000000000000f0                IRQ_IRQHandler
+                0x00000000000000f0                PIT_CH0_IRQHandler
+                0x00000000000000f0                ACMP0_IRQHandler
+                0x00000000000000f0                PWT_IRQHandler
+                0x00000000000000f0                ICS_IRQHandler
+                0x00000000000000f0                PIT_CH1_IRQHandler
+                0x00000000000000f0                KBI0_IRQHandler
+                0x00000000000000f0                PMC_IRQHandler
+                0x00000000000000f0                SPI0_IRQHandler
+                0x00000000000000f0                FTM0_IRQHandler
+                0x00000000000000f0                WDOG_IRQHandler
+                0x00000000000000f0                FTM2_IRQHandler
+                0x00000000000000f0                ACMP1_IRQHandler
+                0x00000000000000f0                KBI1_IRQHandler
  *(.text)
- .text          0x0000000020000004        0x0 obj/main.o
- .text          0x0000000020000004       0x20 obj/startup.o
-                0x0000000020000004                startup
- .text          0x0000000020000024        0x0 obj/crt0.o
+ .text          0x00000000000000f8        0x0 obj/main.o
+ .text          0x00000000000000f8       0x20 obj/startup.o
+                0x00000000000000f8                startup
+ .text          0x0000000000000118        0x0 obj/crt0.o
  *(.text.*)
- .text.startup  0x0000000020000024       0x40 obj/main.o
-                0x0000000020000024                main
+ .text.startup  0x0000000000000118       0x40 obj/main.o
+                0x0000000000000118                main
  *(.glue_7)
- .glue_7        0x0000000020000064        0x0 linker stubs
+ .glue_7        0x0000000000000158        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000020000064        0x0 linker stubs
-                0x0000000020000064                . = ALIGN (0x4)
+ .glue_7t       0x0000000000000158        0x0 linker stubs
+                0x0000000000000158                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
+
+.vfp11_veneer   0x0000000000000158        0x0
+ .vfp11_veneer  0x0000000000000158        0x0 linker stubs
+
+.v4_bx          0x0000000000000158        0x0
+ .v4_bx         0x0000000000000158        0x0 linker stubs
+
+.iplt           0x0000000000000158        0x0
+ .iplt          0x0000000000000158        0x0 obj/main.o
+
+.igot.plt       0x0000000000000158        0x0
+ .igot.plt      0x0000000000000158        0x0 obj/main.o
+
+.rel.dyn        0x0000000000000158        0x0
+ .rel.iplt      0x0000000000000158        0x0 obj/main.o
+
+.flash_at_rest_ram_at_run
+                0x000000001fffff00        0x0 load address 0x0000000000000158
+                0x000000001fffff00                . = ALIGN (0x4)
  *(.data)
- .data          0x0000000020000064        0x0 obj/main.o
- .data          0x0000000020000064        0x0 obj/startup.o
- .data          0x0000000020000064        0x0 obj/crt0.o
+ .data          0x000000001fffff00        0x0 obj/main.o
+ .data          0x000000001fffff00        0x0 obj/startup.o
+ .data          0x000000001fffff00        0x0 obj/crt0.o
  *(.data.*)
  *(.shdata)
-                0x0000000020000064                . = ALIGN (0x4)
-                0x0000000020000064                _start_bss = .
+
+.ram_only       0x000000001fffff00        0x0 load address 0x0000000000000158
+                0x000000001fffff00                . = ALIGN (0x4)
+                0x000000001fffff00                _start_bss = .
  *(.bss)
- .bss           0x0000000020000064        0x0 obj/main.o
- .bss           0x0000000020000064        0x0 obj/startup.o
- .bss           0x0000000020000064        0x0 obj/crt0.o
+ .bss           0x000000001fffff00        0x0 obj/main.o
+ .bss           0x000000001fffff00        0x0 obj/startup.o
+ .bss           0x000000001fffff00        0x0 obj/crt0.o
  *(.bss.*)
-                0x0000000020000064                _end_bss = .
+                0x000000001fffff00                _end_bss = .
                 0x0000000000000000                _bss_size = (_end_bss - _start_bss)
                 0x0000000020000280                _start_stack = (_top_stack - TOTAL_RESERVED_STACK)
                 [0x0000000020000300]                _top_stack = _top_stack
 OUTPUT(bin/firmware.elf elf32-littlearm)
-
-.vfp11_veneer   0x0000000020000064        0x0
- .vfp11_veneer  0x0000000020000064        0x0 linker stubs
-
-.v4_bx          0x0000000020000064        0x0
- .v4_bx         0x0000000020000064        0x0 linker stubs
-
-.iplt           0x0000000020000064        0x0
- .iplt          0x0000000020000064        0x0 obj/main.o
-
-.igot.plt       0x0000000020000064        0x0
- .igot.plt      0x0000000020000064        0x0 obj/main.o
-
-.rel.dyn        0x0000000020000064        0x0
- .rel.iplt      0x0000000020000064        0x0 obj/main.o
 
 .debug_info     0x0000000000000000      0x1fc
  .debug_info    0x0000000000000000      0x11d obj/main.o
