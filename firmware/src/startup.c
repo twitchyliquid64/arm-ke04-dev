@@ -2,12 +2,9 @@
  * KE04 Loading Firmware
  * Mid-level startup code
  *
- * Kevin Cuzner
+ * originally by Kevin Cuzner
+ * modified by meh
  */
-
- /*
-  * Linker-provided addresses and values for initial loading
-  */
 
 #include "MKE04Z4.h"
 #include <stdint.h>

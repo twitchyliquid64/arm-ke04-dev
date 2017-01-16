@@ -19,7 +19,7 @@ END GROUP
                 0x0000000000000080                TOTAL_RESERVED_STACK = 0x80
                 0x0000000020000300                _top_stack = 0x20000300
 
-.flashonly      0x0000000000000000      0x1fc
+.flashonly      0x0000000000000000      0x200
                 0x0000000000000000                __interrupt_vector_table = .
  *(.interrupt_vector_table)
  .interrupt_vector_table
@@ -64,33 +64,33 @@ END GROUP
                 0x000000000000018c                startup
  .text          0x00000000000001bc        0x0 obj/crt0.o
  *(.text.*)
- .text.startup  0x00000000000001bc       0x40 obj/main.o
+ .text.startup  0x00000000000001bc       0x44 obj/main.o
                 0x00000000000001bc                main
  *(.glue_7)
- .glue_7        0x00000000000001fc        0x0 linker stubs
+ .glue_7        0x0000000000000200        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00000000000001fc        0x0 linker stubs
-                0x00000000000001fc                . = ALIGN (0x4)
+ .glue_7t       0x0000000000000200        0x0 linker stubs
+                0x0000000000000200                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
 
-.vfp11_veneer   0x00000000000001fc        0x0
- .vfp11_veneer  0x00000000000001fc        0x0 linker stubs
+.vfp11_veneer   0x0000000000000200        0x0
+ .vfp11_veneer  0x0000000000000200        0x0 linker stubs
 
-.v4_bx          0x00000000000001fc        0x0
- .v4_bx         0x00000000000001fc        0x0 linker stubs
+.v4_bx          0x0000000000000200        0x0
+ .v4_bx         0x0000000000000200        0x0 linker stubs
 
-.iplt           0x00000000000001fc        0x0
- .iplt          0x00000000000001fc        0x0 obj/pit.o
+.iplt           0x0000000000000200        0x0
+ .iplt          0x0000000000000200        0x0 obj/pit.o
 
-.igot.plt       0x00000000000001fc        0x0
- .igot.plt      0x00000000000001fc        0x0 obj/pit.o
+.igot.plt       0x0000000000000200        0x0
+ .igot.plt      0x0000000000000200        0x0 obj/pit.o
 
-.rel.dyn        0x00000000000001fc        0x0
- .rel.iplt      0x00000000000001fc        0x0 obj/pit.o
+.rel.dyn        0x0000000000000200        0x0
+ .rel.iplt      0x0000000000000200        0x0 obj/pit.o
 
 .flash_at_rest_ram_at_run
-                0x000000001fffff00        0x0 load address 0x00000000000001fc
+                0x000000001fffff00        0x0 load address 0x0000000000000200
                 0x000000001fffff00                . = ALIGN (0x4)
                 0x000000001fffff00                _start_data = .
  *(.data)
@@ -102,7 +102,7 @@ END GROUP
  *(.shdata)
                 0x000000001fffff00                _end_data = .
 
-.ram_only       0x000000001fffff00        0x4 load address 0x00000000000001fc
+.ram_only       0x000000001fffff00        0x4 load address 0x0000000000000200
                 0x000000001fffff00                . = ALIGN (0x4)
                 0x000000001fffff00                _start_bss = .
  *(.bss)
@@ -115,20 +115,20 @@ END GROUP
                 0x000000001fffff04                _end_bss = .
                 0x0000000000000004                _bss_size = (_end_bss - _start_bss)
                 0x0000000000000000                _data_size = (_end_data - _start_data)
-                0x00000000000001fc                _data_flash_addr = LOADADDR (.flash_at_rest_ram_at_run)
+                0x0000000000000200                _data_flash_addr = LOADADDR (.flash_at_rest_ram_at_run)
                 0x0000000020000280                _start_stack = (_top_stack - TOTAL_RESERVED_STACK)
                 [0x0000000020000300]                _top_stack = _top_stack
 OUTPUT(bin/firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000      0x5bf
+.debug_info     0x0000000000000000      0x5d7
  .debug_info    0x0000000000000000      0x2ed obj/pit.o
- .debug_info    0x00000000000002ed      0x149 obj/main.o
- .debug_info    0x0000000000000436      0x189 obj/startup.o
+ .debug_info    0x00000000000002ed      0x161 obj/main.o
+ .debug_info    0x000000000000044e      0x189 obj/startup.o
 
-.debug_abbrev   0x0000000000000000      0x2b6
+.debug_abbrev   0x0000000000000000      0x2d4
  .debug_abbrev  0x0000000000000000       0xfb obj/pit.o
- .debug_abbrev  0x00000000000000fb       0xc1 obj/main.o
- .debug_abbrev  0x00000000000001bc       0xfa obj/startup.o
+ .debug_abbrev  0x00000000000000fb       0xdf obj/main.o
+ .debug_abbrev  0x00000000000001da       0xfa obj/startup.o
 
 .debug_aranges  0x0000000000000000       0x60
  .debug_aranges
@@ -138,17 +138,17 @@ OUTPUT(bin/firmware.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000040       0x20 obj/startup.o
 
-.debug_line     0x0000000000000000      0x1f8
+.debug_line     0x0000000000000000      0x212
  .debug_line    0x0000000000000000       0xb1 obj/pit.o
- .debug_line    0x00000000000000b1       0xa0 obj/main.o
- .debug_line    0x0000000000000151       0xa7 obj/startup.o
+ .debug_line    0x00000000000000b1       0xba obj/main.o
+ .debug_line    0x000000000000016b       0xa7 obj/startup.o
 
-.debug_str      0x0000000000000000      0x277
+.debug_str      0x0000000000000000      0x284
  .debug_str     0x0000000000000000      0x1f2 obj/pit.o
                                         0x226 (size before relaxing)
- .debug_str     0x00000000000001f2       0x43 obj/main.o
-                                        0x177 (size before relaxing)
- .debug_str     0x0000000000000235       0x42 obj/startup.o
+ .debug_str     0x00000000000001f2       0x50 obj/main.o
+                                        0x184 (size before relaxing)
+ .debug_str     0x0000000000000242       0x42 obj/startup.o
                                         0x184 (size before relaxing)
 
 .comment        0x0000000000000000       0x38

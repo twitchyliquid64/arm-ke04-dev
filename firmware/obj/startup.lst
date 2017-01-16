@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccQZ0C9k.s 			page 1
+ARM GAS  /tmp/ccKDn2Xq.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -29,101 +29,98 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
    2:src/startup.c ****  * KE04 Loading Firmware
    3:src/startup.c ****  * Mid-level startup code
    4:src/startup.c ****  *
-   5:src/startup.c ****  * Kevin Cuzner
-   6:src/startup.c ****  */
-   7:src/startup.c **** 
-   8:src/startup.c ****  /*
-   9:src/startup.c ****   * Linker-provided addresses and values for initial loading
-  10:src/startup.c ****   */
+   5:src/startup.c ****  * originally by Kevin Cuzner
+   6:src/startup.c ****  * modified by meh
+   7:src/startup.c ****  */
+   8:src/startup.c **** 
+   9:src/startup.c **** #include "MKE04Z4.h"
+  10:src/startup.c **** #include <stdint.h>
   11:src/startup.c **** 
-  12:src/startup.c **** #include "MKE04Z4.h"
-  13:src/startup.c **** #include <stdint.h>
-  14:src/startup.c **** 
-  15:src/startup.c **** /**
-  16:src/startup.c ****  * Sets up the ICS module to FEI at approximately 48MHz with the peripheral
-  17:src/startup.c ****  * clock at 24MHz
-  18:src/startup.c ****  */
-  19:src/startup.c **** static void setup_ICS(void)
-  20:src/startup.c **** {
-  21:src/startup.c ****     //we assume this is run soon after setup
-  22:src/startup.c ****     ICS->C2 = 0x00; //bdiv=0
-  23:src/startup.c ****     ICS->C1 = 0x04; //internal reference clock to FLL
-  24:src/startup.c **** }
-  25:src/startup.c **** 
+  12:src/startup.c **** /**
+  13:src/startup.c ****  * Sets up the ICS module to FEI at approximately 48MHz with the peripheral
+  14:src/startup.c ****  * clock at 24MHz
+  15:src/startup.c ****  */
+  16:src/startup.c **** static void setup_ICS(void)
+  17:src/startup.c **** {
+  18:src/startup.c ****     //we assume this is run soon after setup
+  19:src/startup.c ****     ICS->C2 = 0x00; //bdiv=0
+  20:src/startup.c ****     ICS->C1 = 0x04; //internal reference clock to FLL
+  21:src/startup.c **** }
+  22:src/startup.c **** 
+  23:src/startup.c **** 
+  24:src/startup.c **** 
+  25:src/startup.c **** extern uint32_t _start_bss, _end_bss, _start_data, _data_size, _data_flash_addr;
   26:src/startup.c **** 
-  27:src/startup.c **** 
-  28:src/startup.c **** extern uint32_t _start_bss, _end_bss, _start_data, _data_size, _data_flash_addr;
-  29:src/startup.c **** 
-  30:src/startup.c **** void startup()
-  31:src/startup.c **** {
-  25              		.loc 1 31 0
+  27:src/startup.c **** void startup()
+  28:src/startup.c **** {
+  25              		.loc 1 28 0
   26              		.cfi_startproc
-ARM GAS  /tmp/ccQZ0C9k.s 			page 2
-
-
   27              	.LVL0:
   28 0000 08B5     		push	{r3, lr}
   29              		.cfi_def_cfa_offset 8
+ARM GAS  /tmp/ccKDn2Xq.s 			page 2
+
+
   30              		.cfi_offset 3, -8
   31              		.cfi_offset 14, -4
-  32:src/startup.c ****     /* Zero the BSS */
-  33:src/startup.c ****     uint32_t *dest;
-  34:src/startup.c ****     for (dest = &_start_bss; dest < &_end_bss; dest++)
-  32              		.loc 1 34 0
+  29:src/startup.c ****     /* Zero the BSS */
+  30:src/startup.c ****     uint32_t *dest;
+  31:src/startup.c ****     for (dest = &_start_bss; dest < &_end_bss; dest++)
+  32              		.loc 1 31 0
   33 0002 084B     		ldr	r3, .L6
   34              	.LVL1:
   35              	.L2:
-  36              		.loc 1 34 0 is_stmt 0 discriminator 1
+  36              		.loc 1 31 0 is_stmt 0 discriminator 1
   37 0004 0849     		ldr	r1, .L6+4
   38 0006 0022     		mov	r2, #0
   39 0008 8B42     		cmp	r3, r1
   40 000a 01D2     		bcs	.L5
-  35:src/startup.c ****         *dest = 0;
-  41              		.loc 1 35 0 is_stmt 1 discriminator 3
+  32:src/startup.c ****         *dest = 0;
+  41              		.loc 1 32 0 is_stmt 1 discriminator 3
   42 000c 04C3     		stmia	r3!, {r2}
   43              	.LVL2:
   44 000e F9E7     		b	.L2
   45              	.L5:
   46              	.LBB4:
   47              	.LBB5:
-  22:src/startup.c ****     ICS->C1 = 0x04; //internal reference clock to FLL
-  48              		.loc 1 22 0
+  19:src/startup.c ****     ICS->C1 = 0x04; //internal reference clock to FLL
+  48              		.loc 1 19 0
   49 0010 064B     		ldr	r3, .L6+8
   50              	.LVL3:
   51              	.LBE5:
   52              	.LBE4:
+  33:src/startup.c **** 
+  34:src/startup.c ****     setup_ICS(); //set up the clock to our known 48MHz frequency
+  35:src/startup.c ****     setup_PIT();
   36:src/startup.c **** 
-  37:src/startup.c ****     setup_ICS(); //set up the clock to our known 48MHz frequency
-  38:src/startup.c ****     setup_PIT();
-  39:src/startup.c **** 
-  40:src/startup.c ****     main();
-  41:src/startup.c **** }
-  53              		.loc 1 41 0
+  37:src/startup.c ****     main();
+  38:src/startup.c **** }
+  53              		.loc 1 38 0
   54              		@ sp needed
   55              	.LBB7:
   56              	.LBB6:
-  22:src/startup.c ****     ICS->C1 = 0x04; //internal reference clock to FLL
-  57              		.loc 1 22 0
+  19:src/startup.c ****     ICS->C1 = 0x04; //internal reference clock to FLL
+  57              		.loc 1 19 0
   58 0012 5A70     		strb	r2, [r3, #1]
-  23:src/startup.c **** }
-  59              		.loc 1 23 0
+  20:src/startup.c **** }
+  59              		.loc 1 20 0
   60 0014 0432     		add	r2, r2, #4
   61 0016 1A70     		strb	r2, [r3]
   62              	.LBE6:
   63              	.LBE7:
-  38:src/startup.c **** 
-  64              		.loc 1 38 0
+  35:src/startup.c **** 
+  64              		.loc 1 35 0
   65 0018 FFF7FEFF 		bl	setup_PIT
   66              	.LVL4:
-  40:src/startup.c **** }
-  67              		.loc 1 40 0
+  37:src/startup.c **** }
+  67              		.loc 1 37 0
   68 001c FFF7FEFF 		bl	main
-ARM GAS  /tmp/ccQZ0C9k.s 			page 3
-
-
   69              	.LVL5:
-  70              		.loc 1 41 0
+  70              		.loc 1 38 0
   71 0020 08BD     		pop	{r3, pc}
+ARM GAS  /tmp/ccKDn2Xq.s 			page 3
+
+
   72              	.L7:
   73 0022 C046     		.align	2
   74              	.L6:
@@ -178,12 +175,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  123 0053 02       		.uleb128 0x2
  124 0054 02       		.byte	0x2
  125 0055 07       		.byte	0x7
-ARM GAS  /tmp/ccQZ0C9k.s 			page 4
-
-
  126 0056 0C010000 		.4byte	.LASF5
  127 005a 03       		.uleb128 0x3
  128 005b F2000000 		.4byte	.LASF7
+ARM GAS  /tmp/ccKDn2Xq.s 			page 4
+
+
  129 005f 02       		.byte	0x2
  130 0060 34       		.byte	0x34
  131 0061 65000000 		.4byte	0x65
@@ -238,12 +235,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  180 00bf 7B05     		.2byte	0x57b
  181 00c1 88000000 		.4byte	0x88
  182 00c5 03       		.byte	0x3
-ARM GAS  /tmp/ccQZ0C9k.s 			page 5
-
-
  183 00c6 07       		.uleb128 0x7
  184 00c7 5300     		.ascii	"S\000"
  185 00c9 03       		.byte	0x3
+ARM GAS  /tmp/ccKDn2Xq.s 			page 5
+
+
  186 00ca 7C05     		.2byte	0x57c
  187 00cc 88000000 		.4byte	0x88
  188 00d0 04       		.byte	0x4
@@ -256,12 +253,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  195 00de 09       		.uleb128 0x9
  196 00df 1C000000 		.4byte	.LASF20
  197 00e3 01       		.byte	0x1
- 198 00e4 13       		.byte	0x13
+ 198 00e4 10       		.byte	0x10
  199 00e5 01       		.byte	0x1
  200 00e6 0A       		.uleb128 0xa
  201 00e7 04010000 		.4byte	.LASF21
  202 00eb 01       		.byte	0x1
- 203 00ec 1E       		.byte	0x1e
+ 203 00ec 1B       		.byte	0x1b
  204 00ed 00000000 		.4byte	.LFB34
  205 00f1 30000000 		.4byte	.LFE34-.LFB34
  206 00f5 01       		.uleb128 0x1
@@ -270,13 +267,13 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  209 00fb 0B       		.uleb128 0xb
  210 00fc 33000000 		.4byte	.LASF22
  211 0100 01       		.byte	0x1
- 212 0101 21       		.byte	0x21
+ 212 0101 1E       		.byte	0x1e
  213 0102 4E010000 		.4byte	0x14e
  214 0106 00000000 		.4byte	.LLST0
  215 010a 0C       		.uleb128 0xc
  216 010b 34010000 		.4byte	.LASF13
  217 010f 01       		.byte	0x1
- 218 0110 26       		.byte	0x26
+ 218 0110 23       		.byte	0x23
  219 0111 73000000 		.4byte	0x73
  220 0115 1B010000 		.4byte	0x11b
  221 0119 0D       		.uleb128 0xd
@@ -284,7 +281,7 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  223 011b 0C       		.uleb128 0xc
  224 011c 38000000 		.4byte	.LASF14
  225 0120 01       		.byte	0x1
- 226 0121 28       		.byte	0x28
+ 226 0121 25       		.byte	0x25
  227 0122 73000000 		.4byte	0x73
  228 0126 2C010000 		.4byte	0x12c
  229 012a 0D       		.uleb128 0xd
@@ -294,16 +291,16 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  233 0131 10000000 		.4byte	.LBB4
  234 0135 00000000 		.4byte	.Ldebug_ranges0+0
  235 0139 01       		.byte	0x1
- 236 013a 25       		.byte	0x25
+ 236 013a 22       		.byte	0x22
  237 013b 0F       		.uleb128 0xf
  238 013c 1C000000 		.4byte	.LVL4
  239 0140 6A010000 		.4byte	0x16a
-ARM GAS  /tmp/ccQZ0C9k.s 			page 6
-
-
  240 0144 0F       		.uleb128 0xf
  241 0145 20000000 		.4byte	.LVL5
  242 0149 7B010000 		.4byte	0x17b
+ARM GAS  /tmp/ccKDn2Xq.s 			page 6
+
+
  243 014d 00       		.byte	0
  244 014e 10       		.uleb128 0x10
  245 014f 04       		.byte	0x4
@@ -311,17 +308,17 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  247 0154 11       		.uleb128 0x11
  248 0155 48010000 		.4byte	.LASF15
  249 0159 01       		.byte	0x1
- 250 015a 1C       		.byte	0x1c
+ 250 015a 19       		.byte	0x19
  251 015b 5A000000 		.4byte	0x5a
  252 015f 11       		.uleb128 0x11
  253 0160 E9000000 		.4byte	.LASF16
  254 0164 01       		.byte	0x1
- 255 0165 1C       		.byte	0x1c
+ 255 0165 19       		.byte	0x19
  256 0166 5A000000 		.4byte	0x5a
  257 016a 0C       		.uleb128 0xc
  258 016b 34010000 		.4byte	.LASF13
  259 016f 01       		.byte	0x1
- 260 0170 26       		.byte	0x26
+ 260 0170 23       		.byte	0x23
  261 0171 73000000 		.4byte	0x73
  262 0175 7B010000 		.4byte	0x17b
  263 0179 0D       		.uleb128 0xd
@@ -329,7 +326,7 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  265 017b 12       		.uleb128 0x12
  266 017c 38000000 		.4byte	.LASF14
  267 0180 01       		.byte	0x1
- 268 0181 28       		.byte	0x28
+ 268 0181 25       		.byte	0x25
  269 0182 73000000 		.4byte	0x73
  270 0186 0D       		.uleb128 0xd
  271 0187 00       		.byte	0
@@ -358,12 +355,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  294 0013 02       		.uleb128 0x2
  295 0014 24       		.uleb128 0x24
  296 0015 00       		.byte	0
-ARM GAS  /tmp/ccQZ0C9k.s 			page 7
-
-
  297 0016 0B       		.uleb128 0xb
  298 0017 0B       		.uleb128 0xb
  299 0018 3E       		.uleb128 0x3e
+ARM GAS  /tmp/ccKDn2Xq.s 			page 7
+
+
  300 0019 0B       		.uleb128 0xb
  301 001a 03       		.uleb128 0x3
  302 001b 0E       		.uleb128 0xe
@@ -418,12 +415,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  351 004c 00       		.byte	0
  352 004d 03       		.uleb128 0x3
  353 004e 08       		.uleb128 0x8
-ARM GAS  /tmp/ccQZ0C9k.s 			page 8
-
-
  354 004f 3A       		.uleb128 0x3a
  355 0050 0B       		.uleb128 0xb
  356 0051 3B       		.uleb128 0x3b
+ARM GAS  /tmp/ccKDn2Xq.s 			page 8
+
+
  357 0052 05       		.uleb128 0x5
  358 0053 49       		.uleb128 0x49
  359 0054 13       		.uleb128 0x13
@@ -478,12 +475,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  408 0085 18       		.uleb128 0x18
  409 0086 9742     		.uleb128 0x2117
  410 0088 19       		.uleb128 0x19
-ARM GAS  /tmp/ccQZ0C9k.s 			page 9
-
-
  411 0089 01       		.uleb128 0x1
  412 008a 13       		.uleb128 0x13
  413 008b 00       		.byte	0
+ARM GAS  /tmp/ccKDn2Xq.s 			page 9
+
+
  414 008c 00       		.byte	0
  415 008d 0B       		.uleb128 0xb
  416 008e 34       		.uleb128 0x34
@@ -538,12 +535,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  465 00bf 59       		.uleb128 0x59
  466 00c0 0B       		.uleb128 0xb
  467 00c1 00       		.byte	0
-ARM GAS  /tmp/ccQZ0C9k.s 			page 10
-
-
  468 00c2 00       		.byte	0
  469 00c3 0F       		.uleb128 0xf
  470 00c4 898201   		.uleb128 0x4109
+ARM GAS  /tmp/ccKDn2Xq.s 			page 10
+
+
  471 00c7 00       		.byte	0
  472 00c8 11       		.uleb128 0x11
  473 00c9 01       		.uleb128 0x1
@@ -598,12 +595,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  522              		.section	.debug_loc,"",%progbits
  523              	.Ldebug_loc0:
  524              	.LLST0:
-ARM GAS  /tmp/ccQZ0C9k.s 			page 11
-
-
  525 0000 04000000 		.4byte	.LVL1-.Ltext0
  526 0004 12000000 		.4byte	.LVL3-.Ltext0
  527 0008 0100     		.2byte	0x1
+ARM GAS  /tmp/ccKDn2Xq.s 			page 11
+
+
  528 000a 53       		.byte	0x53
  529 000b 00000000 		.4byte	0
  530 000f 00000000 		.4byte	0
@@ -658,12 +655,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  563      00
  564              	.LASF14:
  565 0038 6D61696E 		.ascii	"main\000"
-ARM GAS  /tmp/ccQZ0C9k.s 			page 12
-
-
  565      00
  566              	.LASF8:
  567 003d 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  /tmp/ccKDn2Xq.s 			page 12
+
+
  567      20756E73 
  567      69676E65 
  567      6420696E 
@@ -718,12 +715,12 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  587      6E7400
  588              	.LASF0:
  589 011f 7369676E 		.ascii	"signed char\000"
-ARM GAS  /tmp/ccQZ0C9k.s 			page 13
-
-
  589      65642063 
  589      68617200 
  590              	.LASF12:
+ARM GAS  /tmp/ccKDn2Xq.s 			page 13
+
+
  591 012b 4943535F 		.ascii	"ICS_Type\000"
  591      54797065 
  591      00
@@ -750,14 +747,14 @@ ARM GAS  /tmp/ccQZ0C9k.s 			page 1
  601      6F6A6563 
  601      74732F61 
  602              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccQZ0C9k.s 			page 14
+ARM GAS  /tmp/ccKDn2Xq.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 startup.c
-     /tmp/ccQZ0C9k.s:17     .text:0000000000000000 $t
-     /tmp/ccQZ0C9k.s:22     .text:0000000000000000 startup
-     /tmp/ccQZ0C9k.s:75     .text:0000000000000024 $d
+     /tmp/ccKDn2Xq.s:17     .text:0000000000000000 $t
+     /tmp/ccKDn2Xq.s:22     .text:0000000000000000 startup
+     /tmp/ccKDn2Xq.s:75     .text:0000000000000024 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

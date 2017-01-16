@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccNdwYfL.s 			page 1
+ARM GAS  /tmp/ccef55Ak.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
   32              		.loc 1 15 0
   33 0004 CB68     		ldr	r3, [r1, #12]
   34 0006 1343     		orr	r3, r2
-ARM GAS  /tmp/ccNdwYfL.s 			page 2
+ARM GAS  /tmp/ccef55Ak.s 			page 2
 
 
   35 0008 CB60     		str	r3, [r1, #12]
@@ -118,11 +118,11 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
   27:src/pit.c     **** void PIT_CH0_IRQHandler(void)
   28:src/pit.c     **** {
   78              		.loc 1 28 0
-ARM GAS  /tmp/ccNdwYfL.s 			page 3
+ARM GAS  /tmp/ccef55Ak.s 			page 3
 
 
   79              		.cfi_startproc
-  29:src/pit.c     ****     PIT->CHANNEL[0].TFLG = 0x1;
+  29:src/pit.c     ****     PIT->CHANNEL[0].TFLG = 0x1; //reset the trigger so it can fire again. 
   80              		.loc 1 29 0
   81 003c 0122     		mov	r2, #1
   82 003e 034B     		ldr	r3, .L5
@@ -130,7 +130,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
   31:src/pit.c     **** }
   83              		.loc 1 31 0
   84              		@ sp needed
-  29:src/pit.c     ****     PIT->CHANNEL[0].TFLG = 0x1;
+  29:src/pit.c     ****     PIT->CHANNEL[0].TFLG = 0x1; //reset the trigger so it can fire again. 
   85              		.loc 1 29 0
   86 0040 1A61     		str	r2, [r3, #16]
   30:src/pit.c     ****     counter++;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  122 005c 00000000 		.word	.LANCHOR0
  123              		.cfi_endproc
  124              	.LFE35:
-ARM GAS  /tmp/ccNdwYfL.s 			page 4
+ARM GAS  /tmp/ccef55Ak.s 			page 4
 
 
  125              		.size	getTicks, .-getTicks
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  179 0054 02       		.byte	0x2
  180 0055 07       		.byte	0x7
  181 0056 84000000 		.4byte	.LASF5
-ARM GAS  /tmp/ccNdwYfL.s 			page 5
+ARM GAS  /tmp/ccef55Ak.s 			page 5
 
 
  182 005a 03       		.uleb128 0x3
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  236 00c7 44010000 		.4byte	0x144
  237 00cb 0001     		.2byte	0x100
  238 00cd 07       		.uleb128 0x7
-ARM GAS  /tmp/ccNdwYfL.s 			page 6
+ARM GAS  /tmp/ccef55Ak.s 			page 6
 
 
  239 00ce 1D000000 		.4byte	.LASF16
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  293 0149 0B       		.uleb128 0xb
  294 014a 13010000 		.4byte	0x113
  295 014e 09       		.uleb128 0x9
-ARM GAS  /tmp/ccNdwYfL.s 			page 7
+ARM GAS  /tmp/ccef55Ak.s 			page 7
 
 
  296 014f 5A000000 		.4byte	0x5a
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  350 01c7 05       		.uleb128 0x5
  351 01c8 2001     		.2byte	0x120
  352 01ca 04       		.byte	0x4
-ARM GAS  /tmp/ccNdwYfL.s 			page 8
+ARM GAS  /tmp/ccef55Ak.s 			page 8
 
 
  353 01cb 2B07     		.2byte	0x72b
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  407 0242 D008     		.2byte	0x8d0
  408 0244 84010000 		.4byte	0x184
  409 0248 04       		.byte	0x4
-ARM GAS  /tmp/ccNdwYfL.s 			page 9
+ARM GAS  /tmp/ccef55Ak.s 			page 9
 
 
  410 0249 06       		.uleb128 0x6
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  464 02bc 3C000000 		.4byte	.LFB34
  465 02c0 18000000 		.4byte	.LFE34-.LFB34
  466 02c4 01       		.uleb128 0x1
-ARM GAS  /tmp/ccNdwYfL.s 			page 10
+ARM GAS  /tmp/ccef55Ak.s 			page 10
 
 
  467 02c5 9C       		.byte	0x9c
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  521 0021 03       		.uleb128 0x3
  522 0022 0E       		.uleb128 0xe
  523 0023 3A       		.uleb128 0x3a
-ARM GAS  /tmp/ccNdwYfL.s 			page 11
+ARM GAS  /tmp/ccef55Ak.s 			page 11
 
 
  524 0024 0B       		.uleb128 0xb
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  578 005a 05       		.uleb128 0x5
  579 005b 49       		.uleb128 0x49
  580 005c 13       		.uleb128 0x13
-ARM GAS  /tmp/ccNdwYfL.s 			page 12
+ARM GAS  /tmp/ccef55Ak.s 			page 12
 
 
  581 005d 38       		.uleb128 0x38
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  635 0093 13       		.uleb128 0x13
  636 0094 00       		.byte	0
  637 0095 00       		.byte	0
-ARM GAS  /tmp/ccNdwYfL.s 			page 13
+ARM GAS  /tmp/ccef55Ak.s 			page 13
 
 
  638 0096 0D       		.uleb128 0xd
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  692 00cc 9742     		.uleb128 0x2117
  693 00ce 19       		.uleb128 0x19
  694 00cf 00       		.byte	0
-ARM GAS  /tmp/ccNdwYfL.s 			page 14
+ARM GAS  /tmp/ccef55Ak.s 			page 14
 
 
  695 00d0 00       		.byte	0
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  749              		.section	.debug_line,"",%progbits
  750              	.Ldebug_line0:
  751 0000 AD000000 		.section	.debug_str,"MS",%progbits,1
-ARM GAS  /tmp/ccNdwYfL.s 			page 15
+ARM GAS  /tmp/ccef55Ak.s 			page 15
 
 
  751      02008000 
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  781 006c 6C6F6E67 		.ascii	"long unsigned int\000"
  781      20756E73 
  781      69676E65 
-ARM GAS  /tmp/ccNdwYfL.s 			page 16
+ARM GAS  /tmp/ccef55Ak.s 			page 16
 
 
  781      6420696E 
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  807 011a 49535052 		.ascii	"ISPR\000"
  807      00
  808              	.LASF31:
-ARM GAS  /tmp/ccNdwYfL.s 			page 17
+ARM GAS  /tmp/ccef55Ak.s 			page 17
 
 
  809 011f 50494E53 		.ascii	"PINSEL\000"
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  834              	.LASF2:
  835 01f5 6C6F6E67 		.ascii	"long int\000"
  835      20696E74 
-ARM GAS  /tmp/ccNdwYfL.s 			page 18
+ARM GAS  /tmp/ccef55Ak.s 			page 18
 
 
  835      00
@@ -1038,22 +1038,22 @@ ARM GAS  /tmp/ccNdwYfL.s 			page 1
  843      52564544 
  843      3300
  844              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccNdwYfL.s 			page 19
+ARM GAS  /tmp/ccef55Ak.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pit.c
-     /tmp/ccNdwYfL.s:17     .text:0000000000000000 $t
-     /tmp/ccNdwYfL.s:22     .text:0000000000000000 setup_PIT
-     /tmp/ccNdwYfL.s:64     .text:000000000000002c $d
-     /tmp/ccNdwYfL.s:71     .text:000000000000003c $t
-     /tmp/ccNdwYfL.s:76     .text:000000000000003c PIT_CH0_IRQHandler
-     /tmp/ccNdwYfL.s:97     .text:000000000000004c $d
-     /tmp/ccNdwYfL.s:102    .text:0000000000000054 $t
-     /tmp/ccNdwYfL.s:107    .text:0000000000000054 getTicks
-     /tmp/ccNdwYfL.s:122    .text:000000000000005c $d
-     /tmp/ccNdwYfL.s:132    .bss:0000000000000000 counter
-     /tmp/ccNdwYfL.s:128    .bss:0000000000000000 $d
+     /tmp/ccef55Ak.s:17     .text:0000000000000000 $t
+     /tmp/ccef55Ak.s:22     .text:0000000000000000 setup_PIT
+     /tmp/ccef55Ak.s:64     .text:000000000000002c $d
+     /tmp/ccef55Ak.s:71     .text:000000000000003c $t
+     /tmp/ccef55Ak.s:76     .text:000000000000003c PIT_CH0_IRQHandler
+     /tmp/ccef55Ak.s:97     .text:000000000000004c $d
+     /tmp/ccef55Ak.s:102    .text:0000000000000054 $t
+     /tmp/ccef55Ak.s:107    .text:0000000000000054 getTicks
+     /tmp/ccef55Ak.s:122    .text:000000000000005c $d
+     /tmp/ccef55Ak.s:132    .bss:0000000000000000 counter
+     /tmp/ccef55Ak.s:128    .bss:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

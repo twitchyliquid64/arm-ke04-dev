@@ -16,8 +16,8 @@
 
 int main()
 {
-    //__enable_irq(); //Whats this for
-
+    __enable_irq();
+    
     GPIOA->PIDR |= 1 << 17;
     GPIOA->PDDR |= 1 << 17;
     GPIOA->PSOR |= 1 << 17;

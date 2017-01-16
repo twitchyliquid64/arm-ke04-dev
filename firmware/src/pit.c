@@ -26,7 +26,7 @@ uint32_t volatile counter;
 // Called when PIT Channel 0 fires.
 void PIT_CH0_IRQHandler(void)
 {
-    PIT->CHANNEL[0].TFLG = 0x1;
+    PIT->CHANNEL[0].TFLG = 0x1; //reset the trigger so it can fire again.
     counter++;
 }
 
