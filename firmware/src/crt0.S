@@ -2,7 +2,8 @@
  * KE04 Loading Firmware
  * Low-level system initialization
  *
- * Kevin Cuzner
+ * Originally by Kevin Cuzner
+ * Modified by twitchyliquid64 to ____________
  */
     .syntax unified
     .thumb

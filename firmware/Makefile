@@ -46,10 +46,10 @@ RM = rm -rf
 OBJ := $(addprefix $(OBJDIR)/,$(notdir $(SRC:.c=.o)))
 OBJ += $(addprefix $(OBJDIR)/,$(notdir $(ASM:.S=.o)))
 
-#Compiles the .hex & .bin file - for MEMORY write
+#Compiles the .hex & .bin file
 all:: $(BINDIR)/$(PROJECT).hex $(BINDIR)/$(PROJECT).bin
 
-#Compiles a binary file - for MEMORY write
+#Compiles a .bin file
 flat: $(BINDIR)/$(PROJECT).bin
 
 #Prints the absolute memory address of the first instuction.
@@ -60,7 +60,7 @@ p_start: $(BINDIR)/$(PROJECT).elf
 p_stack: $(BINDIR)/$(PROJECT).elf
 	objdump bin/firmware.elf -t | grep _top_stack
 
-#Writes the firmware into a connected devices flash.
+#Writes the firmware into a connected devices flash using JLINK.
 flash: flat
 	JLinkExe -Device MKE04Z8xxx4 -AutoConnect 1 -CommandFile flash.jlink -If SWD -Speed 500
 
