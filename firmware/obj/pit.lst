@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc0KJmFQ.s 			page 1
+ARM GAS  /tmp/ccwHXLWR.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
   32              		@ sp needed
   16:src/pit.c     ****     SIM->SCGC |= SIM_SCGC_PIT_MASK;                   //Turn on the clock for the PIT
   33              		.loc 1 16 0
-ARM GAS  /tmp/cc0KJmFQ.s 			page 2
+ARM GAS  /tmp/ccwHXLWR.s 			page 2
 
 
   34 0004 CB68     		ldr	r3, [r1, #12]
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
   26:src/pit.c     **** 
   27:src/pit.c     **** // Called when PIT Channel 0 fires.
   28:src/pit.c     **** void PIT_CH0_IRQHandler(void)
-ARM GAS  /tmp/cc0KJmFQ.s 			page 3
+ARM GAS  /tmp/ccwHXLWR.s 			page 3
 
 
   29:src/pit.c     **** {
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  120 0056 C046     		.align	2
  121              	.L8:
  122 0058 00000000 		.word	.LANCHOR0
-ARM GAS  /tmp/cc0KJmFQ.s 			page 4
+ARM GAS  /tmp/ccwHXLWR.s 			page 4
 
 
  123              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  167              		.loc 1 44 0
  168              		@ sp needed
  169 006c 10BD     		pop	{r4, pc}
-ARM GAS  /tmp/cc0KJmFQ.s 			page 5
+ARM GAS  /tmp/ccwHXLWR.s 			page 5
 
 
  170              	.L14:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  224 0048 4C000000 		.4byte	0x4c
  225 004c 02       		.uleb128 0x2
  226 004d 01       		.byte	0x1
-ARM GAS  /tmp/cc0KJmFQ.s 			page 6
+ARM GAS  /tmp/ccwHXLWR.s 			page 6
 
 
  227 004e 08       		.byte	0x8
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  281 00ba 2F010000 		.4byte	0x12f
  282 00be 84       		.byte	0x84
  283 00bf 07       		.uleb128 0x7
-ARM GAS  /tmp/cc0KJmFQ.s 			page 7
+ARM GAS  /tmp/ccwHXLWR.s 			page 7
 
 
  284 00c0 37010000 		.4byte	.LASF15
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  338 013d 1E       		.byte	0x1e
  339 013e 00       		.byte	0
  340 013f 0B       		.uleb128 0xb
-ARM GAS  /tmp/cc0KJmFQ.s 			page 8
+ARM GAS  /tmp/ccwHXLWR.s 			page 8
 
 
  341 0140 13010000 		.4byte	0x113
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  395 01ba 18000000 		.4byte	.LASF25
  396 01be 04       		.byte	0x4
  397 01bf 3207     		.2byte	0x732
-ARM GAS  /tmp/cc0KJmFQ.s 			page 9
+ARM GAS  /tmp/ccwHXLWR.s 			page 9
 
 
  398 01c1 84010000 		.4byte	0x184
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  452 0235 CF08     		.2byte	0x8cf
  453 0237 7F010000 		.4byte	0x17f
  454 023b 00       		.byte	0
-ARM GAS  /tmp/cc0KJmFQ.s 			page 10
+ARM GAS  /tmp/ccwHXLWR.s 			page 10
 
 
  455 023c 06       		.uleb128 0x6
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  509 02b0 11       		.uleb128 0x11
  510 02b1 F6000000 		.4byte	.LASF38
  511 02b5 01       		.byte	0x1
-ARM GAS  /tmp/cc0KJmFQ.s 			page 11
+ARM GAS  /tmp/ccwHXLWR.s 			page 11
 
 
  512 02b6 0E       		.byte	0xe
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  566 032a 5A000000 		.4byte	0x5a
  567 032e 18       		.uleb128 0x18
  568 032f A4020000 		.4byte	0x2a4
-ARM GAS  /tmp/cc0KJmFQ.s 			page 12
+ARM GAS  /tmp/ccwHXLWR.s 			page 12
 
 
  569 0333 5C000000 		.4byte	.LBB6
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  623 0020 00       		.byte	0
  624 0021 03       		.uleb128 0x3
  625 0022 0E       		.uleb128 0xe
-ARM GAS  /tmp/cc0KJmFQ.s 			page 13
+ARM GAS  /tmp/ccwHXLWR.s 			page 13
 
 
  626 0023 3A       		.uleb128 0x3a
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  680 0059 3B       		.uleb128 0x3b
  681 005a 05       		.uleb128 0x5
  682 005b 49       		.uleb128 0x49
-ARM GAS  /tmp/cc0KJmFQ.s 			page 14
+ARM GAS  /tmp/ccwHXLWR.s 			page 14
 
 
  683 005c 13       		.uleb128 0x13
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  737 0092 49       		.uleb128 0x49
  738 0093 13       		.uleb128 0x13
  739 0094 00       		.byte	0
-ARM GAS  /tmp/cc0KJmFQ.s 			page 15
+ARM GAS  /tmp/ccwHXLWR.s 			page 15
 
 
  740 0095 00       		.byte	0
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  794 00cb 2E       		.uleb128 0x2e
  795 00cc 01       		.byte	0x1
  796 00cd 3F       		.uleb128 0x3f
-ARM GAS  /tmp/cc0KJmFQ.s 			page 16
+ARM GAS  /tmp/ccwHXLWR.s 			page 16
 
 
  797 00ce 19       		.uleb128 0x19
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  851 0105 18       		.uleb128 0x18
  852 0106 9742     		.uleb128 0x2117
  853 0108 19       		.uleb128 0x19
-ARM GAS  /tmp/cc0KJmFQ.s 			page 17
+ARM GAS  /tmp/ccwHXLWR.s 			page 17
 
 
  854 0109 00       		.byte	0
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  908 0140 3B       		.uleb128 0x3b
  909 0141 0B       		.uleb128 0xb
  910 0142 49       		.uleb128 0x49
-ARM GAS  /tmp/cc0KJmFQ.s 			page 18
+ARM GAS  /tmp/ccwHXLWR.s 			page 18
 
 
  911 0143 13       		.uleb128 0x13
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  965 0000 5C000000 		.4byte	.LVL1-.Ltext0
  966 0004 64000000 		.4byte	.LVL2-.Ltext0
  967 0008 0100     		.2byte	0x1
-ARM GAS  /tmp/cc0KJmFQ.s 			page 19
+ARM GAS  /tmp/ccwHXLWR.s 			page 19
 
 
  968 000a 50       		.byte	0x50
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  1010      3200
  1011              	.LASF13:
  1012 0027 49434552 		.ascii	"ICER\000"
-ARM GAS  /tmp/cc0KJmFQ.s 			page 20
+ARM GAS  /tmp/ccwHXLWR.s 			page 20
 
 
  1012      00
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  1038      74732F61 
  1039              	.LASF34:
  1040 00cc 55554944 		.ascii	"UUIDH\000"
-ARM GAS  /tmp/cc0KJmFQ.s 			page 21
+ARM GAS  /tmp/ccwHXLWR.s 			page 21
 
 
  1040      4800
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  1068      385F7400 
  1069              	.LASF41:
  1070 0162 474E5520 		.ascii	"GNU C 4.9.3 20150529 (prerelease) -mthumb -mcpu=cor"
-ARM GAS  /tmp/cc0KJmFQ.s 			page 22
+ARM GAS  /tmp/ccwHXLWR.s 			page 22
 
 
  1070      4320342E 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  1096      52564544 
  1096      5F3000
  1097              	.LASF35:
-ARM GAS  /tmp/cc0KJmFQ.s 			page 23
+ARM GAS  /tmp/ccwHXLWR.s 			page 23
 
 
  1098 023a 55554944 		.ascii	"UUIDMH\000"
@@ -1328,25 +1328,25 @@ ARM GAS  /tmp/cc0KJmFQ.s 			page 1
  1100      52564544 
  1100      3300
  1101              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/cc0KJmFQ.s 			page 24
+ARM GAS  /tmp/ccwHXLWR.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pit.c
-     /tmp/cc0KJmFQ.s:17     .text:0000000000000000 $t
-     /tmp/cc0KJmFQ.s:22     .text:0000000000000000 setup_PIT
-     /tmp/cc0KJmFQ.s:65     .text:000000000000002c $d
-     /tmp/cc0KJmFQ.s:71     .text:0000000000000038 $t
-     /tmp/cc0KJmFQ.s:76     .text:0000000000000038 PIT_CH0_IRQHandler
-     /tmp/cc0KJmFQ.s:97     .text:0000000000000048 $d
-     /tmp/cc0KJmFQ.s:102    .text:0000000000000050 $t
-     /tmp/cc0KJmFQ.s:107    .text:0000000000000050 getTicks
-     /tmp/cc0KJmFQ.s:122    .text:0000000000000058 $d
-     /tmp/cc0KJmFQ.s:126    .text:000000000000005c $t
-     /tmp/cc0KJmFQ.s:131    .text:000000000000005c delayms
-     /tmp/cc0KJmFQ.s:173    .text:0000000000000070 $d
-     /tmp/cc0KJmFQ.s:183    .bss:0000000000000000 counter
-     /tmp/cc0KJmFQ.s:179    .bss:0000000000000000 $d
+     /tmp/ccwHXLWR.s:17     .text:0000000000000000 $t
+     /tmp/ccwHXLWR.s:22     .text:0000000000000000 setup_PIT
+     /tmp/ccwHXLWR.s:65     .text:000000000000002c $d
+     /tmp/ccwHXLWR.s:71     .text:0000000000000038 $t
+     /tmp/ccwHXLWR.s:76     .text:0000000000000038 PIT_CH0_IRQHandler
+     /tmp/ccwHXLWR.s:97     .text:0000000000000048 $d
+     /tmp/ccwHXLWR.s:102    .text:0000000000000050 $t
+     /tmp/ccwHXLWR.s:107    .text:0000000000000050 getTicks
+     /tmp/ccwHXLWR.s:122    .text:0000000000000058 $d
+     /tmp/ccwHXLWR.s:126    .text:000000000000005c $t
+     /tmp/ccwHXLWR.s:131    .text:000000000000005c delayms
+     /tmp/ccwHXLWR.s:173    .text:0000000000000070 $d
+     /tmp/ccwHXLWR.s:183    .bss:0000000000000000 counter
+     /tmp/ccwHXLWR.s:179    .bss:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

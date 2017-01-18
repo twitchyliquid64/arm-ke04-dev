@@ -11,20 +11,20 @@
 
 
 
-
+void setup()
+{
+    GPIOA->PIDR |= 1 << 17;
+    GPIOA->PDDR |= 1 << 17;
+    GPIOA->PSOR |= 1 << 17;
+}
 
 
 int main()
 {
-    __enable_irq();
-
-    GPIOA->PIDR |= 1 << 17;
-    GPIOA->PDDR |= 1 << 17;
-    GPIOA->PSOR |= 1 << 17;
-
     while (1)
     {
-        delayms(1000);
+        uint8_t adc_val = get_ADC();
+        delayms(adc_val);
         GPIOA->PTOR |= 1 << 17;
     }
 

@@ -8,6 +8,7 @@
 
  #include "MKE04Z4.h"
  #include "pit.h"
+ #include "adc.h"
 #include <stdint.h>
 
 /**
@@ -34,6 +35,9 @@ void startup()
 
     setup_ICS(); //set up the clock to our known 48MHz frequency
     setup_PIT(PIT_2kHz);
+    setup_ADC();
+    __enable_irq();
 
+    setup();
     main();
 }

@@ -11,6 +11,7 @@ Linker script and memory map
 LOAD obj/pit.o
 LOAD obj/main.o
 LOAD obj/startup.o
+LOAD obj/adc.o
 LOAD obj/crt0.o
 START GROUP
 LOAD /usr/lib/gcc/arm-none-eabi/4.9.3/armv6-m/libgcc.a
@@ -19,7 +20,7 @@ END GROUP
                 0x0000000000000080                TOTAL_RESERVED_STACK = 0x80
                 0x0000000020000300                _top_stack = 0x20000300
 
-.flashonly      0x0000000000000000      0x20c
+.flashonly      0x0000000000000000      0x260
                 0x0000000000000000                __interrupt_vector_table = .
  *(.interrupt_vector_table)
  .interrupt_vector_table
@@ -60,50 +61,55 @@ END GROUP
                 0x0000000000000164                PIT_CH0_IRQHandler
                 0x000000000000017c                getTicks
                 0x0000000000000188                delayms
- .text          0x00000000000001a0        0x0 obj/main.o
- .text          0x00000000000001a0       0x34 obj/startup.o
-                0x00000000000001a0                startup
- .text          0x00000000000001d4        0x0 obj/crt0.o
+ .text          0x00000000000001a0       0x20 obj/main.o
+                0x00000000000001a0                setup
+ .text          0x00000000000001c0       0x40 obj/startup.o
+                0x00000000000001c0                startup
+ .text          0x0000000000000200       0x40 obj/adc.o
+                0x0000000000000200                setup_ADC
+                0x0000000000000228                get_ADC
+ .text          0x0000000000000240        0x0 obj/crt0.o
  *(.text.*)
- .text.startup  0x00000000000001d4       0x38 obj/main.o
-                0x00000000000001d4                main
+ .text.startup  0x0000000000000240       0x20 obj/main.o
+                0x0000000000000240                main
  *(.glue_7)
- .glue_7        0x000000000000020c        0x0 linker stubs
+ .glue_7        0x0000000000000260        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x000000000000020c        0x0 linker stubs
-                0x000000000000020c                . = ALIGN (0x4)
+ .glue_7t       0x0000000000000260        0x0 linker stubs
+                0x0000000000000260                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
 
-.vfp11_veneer   0x000000000000020c        0x0
- .vfp11_veneer  0x000000000000020c        0x0 linker stubs
+.vfp11_veneer   0x0000000000000260        0x0
+ .vfp11_veneer  0x0000000000000260        0x0 linker stubs
 
-.v4_bx          0x000000000000020c        0x0
- .v4_bx         0x000000000000020c        0x0 linker stubs
+.v4_bx          0x0000000000000260        0x0
+ .v4_bx         0x0000000000000260        0x0 linker stubs
 
-.iplt           0x000000000000020c        0x0
- .iplt          0x000000000000020c        0x0 obj/pit.o
+.iplt           0x0000000000000260        0x0
+ .iplt          0x0000000000000260        0x0 obj/pit.o
 
-.igot.plt       0x000000000000020c        0x0
- .igot.plt      0x000000000000020c        0x0 obj/pit.o
+.igot.plt       0x0000000000000260        0x0
+ .igot.plt      0x0000000000000260        0x0 obj/pit.o
 
-.rel.dyn        0x000000000000020c        0x0
- .rel.iplt      0x000000000000020c        0x0 obj/pit.o
+.rel.dyn        0x0000000000000260        0x0
+ .rel.iplt      0x0000000000000260        0x0 obj/pit.o
 
 .flash_at_rest_ram_at_run
-                0x000000001fffff00        0x0 load address 0x000000000000020c
+                0x000000001fffff00        0x0 load address 0x0000000000000260
                 0x000000001fffff00                . = ALIGN (0x4)
                 0x000000001fffff00                _start_data = .
  *(.data)
  .data          0x000000001fffff00        0x0 obj/pit.o
  .data          0x000000001fffff00        0x0 obj/main.o
  .data          0x000000001fffff00        0x0 obj/startup.o
+ .data          0x000000001fffff00        0x0 obj/adc.o
  .data          0x000000001fffff00        0x0 obj/crt0.o
  *(.data.*)
  *(.shdata)
                 0x000000001fffff00                _end_data = .
 
-.ram_only       0x000000001fffff00        0x4 load address 0x000000000000020c
+.ram_only       0x000000001fffff00        0x4 load address 0x0000000000000260
                 0x000000001fffff00                . = ALIGN (0x4)
                 0x000000001fffff00                _start_bss = .
  *(.bss)
@@ -111,61 +117,71 @@ END GROUP
                 0x000000001fffff00                counter
  .bss           0x000000001fffff04        0x0 obj/main.o
  .bss           0x000000001fffff04        0x0 obj/startup.o
+ .bss           0x000000001fffff04        0x0 obj/adc.o
  .bss           0x000000001fffff04        0x0 obj/crt0.o
  *(.bss.*)
                 0x000000001fffff04                _end_bss = .
                 0x0000000000000004                _bss_size = (_end_bss - _start_bss)
                 0x0000000000000000                _data_size = (_end_data - _start_data)
-                0x000000000000020c                _data_flash_addr = LOADADDR (.flash_at_rest_ram_at_run)
+                0x0000000000000260                _data_flash_addr = LOADADDR (.flash_at_rest_ram_at_run)
                 0x0000000020000280                _start_stack = (_top_stack - TOTAL_RESERVED_STACK)
                 [0x0000000020000300]                _top_stack = _top_stack
 OUTPUT(bin/firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000      0x62c
+.debug_info     0x0000000000000000      0x869
  .debug_info    0x0000000000000000      0x35f obj/pit.o
- .debug_info    0x000000000000035f      0x149 obj/main.o
- .debug_info    0x00000000000004a8      0x184 obj/startup.o
+ .debug_info    0x000000000000035f      0x189 obj/main.o
+ .debug_info    0x00000000000004e8      0x1d7 obj/startup.o
+ .debug_info    0x00000000000006bf      0x1aa obj/adc.o
 
-.debug_abbrev   0x0000000000000000      0x378
+.debug_abbrev   0x0000000000000000      0x49b
  .debug_abbrev  0x0000000000000000      0x176 obj/pit.o
- .debug_abbrev  0x0000000000000176       0xd5 obj/main.o
- .debug_abbrev  0x000000000000024b      0x12d obj/startup.o
+ .debug_abbrev  0x0000000000000176       0xf1 obj/main.o
+ .debug_abbrev  0x0000000000000267      0x15c obj/startup.o
+ .debug_abbrev  0x00000000000003c3       0xd8 obj/adc.o
 
-.debug_loc      0x0000000000000000       0x34
+.debug_loc      0x0000000000000000       0x47
  .debug_loc     0x0000000000000000       0x21 obj/pit.o
- .debug_loc     0x0000000000000021       0x13 obj/startup.o
+ .debug_loc     0x0000000000000021       0x13 obj/main.o
+ .debug_loc     0x0000000000000034       0x13 obj/startup.o
 
-.debug_aranges  0x0000000000000000       0x60
+.debug_aranges  0x0000000000000000       0x88
  .debug_aranges
                 0x0000000000000000       0x20 obj/pit.o
  .debug_aranges
-                0x0000000000000020       0x20 obj/main.o
+                0x0000000000000020       0x28 obj/main.o
  .debug_aranges
-                0x0000000000000040       0x20 obj/startup.o
+                0x0000000000000048       0x20 obj/startup.o
+ .debug_aranges
+                0x0000000000000068       0x20 obj/adc.o
 
-.debug_ranges   0x0000000000000000       0x40
+.debug_ranges   0x0000000000000000       0x48
  .debug_ranges  0x0000000000000000       0x18 obj/pit.o
- .debug_ranges  0x0000000000000018       0x10 obj/main.o
- .debug_ranges  0x0000000000000028       0x18 obj/startup.o
+ .debug_ranges  0x0000000000000018       0x18 obj/main.o
+ .debug_ranges  0x0000000000000030       0x18 obj/startup.o
 
-.debug_line     0x0000000000000000      0x232
+.debug_line     0x0000000000000000      0x2f3
  .debug_line    0x0000000000000000       0xc2 obj/pit.o
- .debug_line    0x00000000000000c2       0xbf obj/main.o
- .debug_line    0x0000000000000181       0xb1 obj/startup.o
+ .debug_line    0x00000000000000c2       0xba obj/main.o
+ .debug_line    0x000000000000017c       0xd8 obj/startup.o
+ .debug_line    0x0000000000000254       0x9f obj/adc.o
 
-.debug_str      0x0000000000000000      0x2a3
+.debug_str      0x0000000000000000      0x2dd
  .debug_str     0x0000000000000000      0x217 obj/pit.o
                                         0x24b (size before relaxing)
- .debug_str     0x0000000000000217       0x4a obj/main.o
-                                        0x17d (size before relaxing)
- .debug_str     0x0000000000000261       0x42 obj/startup.o
-                                        0x184 (size before relaxing)
+ .debug_str     0x0000000000000217       0x53 obj/main.o
+                                        0x18e (size before relaxing)
+ .debug_str     0x000000000000026a       0x59 obj/startup.o
+                                        0x1a1 (size before relaxing)
+ .debug_str     0x00000000000002c3       0x1a obj/adc.o
+                                        0x199 (size before relaxing)
 
 .comment        0x0000000000000000       0x38
  .comment       0x0000000000000000       0x38 obj/pit.o
                                          0x39 (size before relaxing)
  .comment       0x0000000000000038       0x39 obj/main.o
  .comment       0x0000000000000038       0x39 obj/startup.o
+ .comment       0x0000000000000038       0x39 obj/adc.o
 
 .ARM.attributes
                 0x0000000000000000       0x30
@@ -176,9 +192,12 @@ OUTPUT(bin/firmware.elf elf32-littlearm)
  .ARM.attributes
                 0x0000000000000064       0x32 obj/startup.o
  .ARM.attributes
-                0x0000000000000096       0x22 obj/crt0.o
+                0x0000000000000096       0x32 obj/adc.o
+ .ARM.attributes
+                0x00000000000000c8       0x22 obj/crt0.o
 
-.debug_frame    0x0000000000000000       0xb4
+.debug_frame    0x0000000000000000       0xf4
  .debug_frame   0x0000000000000000       0x5c obj/pit.o
- .debug_frame   0x000000000000005c       0x2c obj/main.o
- .debug_frame   0x0000000000000088       0x2c obj/startup.o
+ .debug_frame   0x000000000000005c       0x3c obj/main.o
+ .debug_frame   0x0000000000000098       0x2c obj/startup.o
+ .debug_frame   0x00000000000000c4       0x30 obj/adc.o
