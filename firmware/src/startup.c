@@ -6,7 +6,8 @@
  * modified by meh
  */
 
-#include "MKE04Z4.h"
+ #include "MKE04Z4.h"
+ #include "pit.h"
 #include <stdint.h>
 
 /**
@@ -32,7 +33,7 @@ void startup()
         *dest = 0;
 
     setup_ICS(); //set up the clock to our known 48MHz frequency
-    setup_PIT();
+    setup_PIT(PIT_2kHz);
 
     main();
 }

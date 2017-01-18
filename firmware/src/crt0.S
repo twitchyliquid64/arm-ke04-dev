@@ -112,6 +112,14 @@ _startup:
     ldr r1, =0x28D9     //Second unlock word
     strh r1,[r0]
 
+    //on every cycle we pet the dog
+    //NOTE: We cannot use an interrupt to reset the watchdog.
+    //It causes a hard fault or something that cuases the CPU to reset :(
+    //__disable_irq();
+    //WDOG->CNT = 0x02A6;
+    //WDOG->CNT = 0x80B4;
+    //__enable_irq();
+
     ldr r0, =0x40052000 //set CS1 to 0 (disable)
     ldr r1, =0x0
     strb r1,[r0]
