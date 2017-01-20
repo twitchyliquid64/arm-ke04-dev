@@ -1,5 +1,5 @@
 #if !defined(ADC_M)
-#define DC_M
+#define ADC_M
 #include <stdint.h>
 
 void  setup_ADC(void);
