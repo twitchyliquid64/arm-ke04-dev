@@ -38,6 +38,7 @@ void startup()
     setup_PIT(PIT_2kHz);
     setup_ADC();
     setup_PWM();
+    setup_UART();
     __enable_irq();
 
     setup();

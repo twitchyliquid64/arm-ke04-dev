@@ -28,13 +28,23 @@ int main()
 {
     while (1)
     {
+        writeUART_str("YOLO\n");
         uint8_t adc_val = get_ADC();
 
-        uint16_t pwm_val = map(adc_val, 0, 255, 100, 2960);
-        pwm_set_amount(pwm_val);
-
-        delayms(adc_val);
-        GPIOA->PTOR |= 1 << 17;
+        if (adc_val > 128){
+          uint16_t pwm_val = map(adc_val, 0, 255, 100, 2960);
+          pwm_set_amount(pwm_val);
+          delayms(adc_val);
+          GPIOA->PTOR |= 1 << 17;
+        } else {
+          uint16_t ch = readUART();
+          if (ch == 'A'){
+            pwm_set_amount(1);
+          }
+          if (ch == 'N'){
+            pwm_set_amount(2991);
+          }
+        }
     }
 
     return 0;

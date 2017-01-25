@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccJ3hDzT.s 			page 1
+ARM GAS  /tmp/cc2jztsJ.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
   11:src/adc.c     ****   SIM->SCGC |= SIM_SCGC_ADC_MASK;    //Turn on the clock for the ADC
   34              		.loc 1 11 0
   35 0008 0B43     		orr	r3, r1
-ARM GAS  /tmp/ccJ3hDzT.s 			page 2
+ARM GAS  /tmp/cc2jztsJ.s 			page 2
 
 
   13:src/adc.c     ****                                      //PTC0 default function is ADC so dont need to touch PINSEL.
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
   76 002e 1A68     		ldr	r2, [r3]
   77 0030 1206     		lsl	r2, r2, #24
   78 0032 FCD5     		bpl	.L5
-ARM GAS  /tmp/ccJ3hDzT.s 			page 3
+ARM GAS  /tmp/cc2jztsJ.s 			page 3
 
 
   31:src/adc.c     ****   //Read the result (A read also clears the register)
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  129 0042 07000000 		.4byte	.LASF6
  130 0046 02       		.byte	0x2
  131 0047 2E       		.byte	0x2e
-ARM GAS  /tmp/ccJ3hDzT.s 			page 4
+ARM GAS  /tmp/cc2jztsJ.s 			page 4
 
 
  132 0048 4C000000 		.4byte	0x4c
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  186 00b1 04       		.byte	0x4
  187 00b2 08       		.uleb128 0x8
  188 00b3 53433300 		.ascii	"SC3\000"
-ARM GAS  /tmp/ccJ3hDzT.s 			page 5
+ARM GAS  /tmp/cc2jztsJ.s 			page 5
 
 
  189 00b7 03       		.byte	0x3
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  243 0121 D008     		.2byte	0x8d0
  244 0123 8D000000 		.4byte	0x8d
  245 0127 04       		.byte	0x4
-ARM GAS  /tmp/ccJ3hDzT.s 			page 6
+ARM GAS  /tmp/cc2jztsJ.s 			page 6
 
 
  246 0128 0D       		.uleb128 0xd
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  300 019b 41000000 		.4byte	0x41
  301 019f 28000000 		.4byte	.LFB34
  302 01a3 18000000 		.4byte	.LFE34-.LFB34
-ARM GAS  /tmp/ccJ3hDzT.s 			page 7
+ARM GAS  /tmp/cc2jztsJ.s 			page 7
 
 
  303 01a7 01       		.uleb128 0x1
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  357 0031 0B       		.uleb128 0xb
  358 0032 03       		.uleb128 0x3
  359 0033 08       		.uleb128 0x8
-ARM GAS  /tmp/ccJ3hDzT.s 			page 8
+ARM GAS  /tmp/cc2jztsJ.s 			page 8
 
 
  360 0034 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  414 006a 13       		.uleb128 0x13
  415 006b 38       		.uleb128 0x38
  416 006c 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccJ3hDzT.s 			page 9
+ARM GAS  /tmp/cc2jztsJ.s 			page 9
 
 
  417 006d 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  471 00a3 38       		.uleb128 0x38
  472 00a4 0B       		.uleb128 0xb
  473 00a5 00       		.byte	0
-ARM GAS  /tmp/ccJ3hDzT.s 			page 10
+ARM GAS  /tmp/cc2jztsJ.s 			page 10
 
 
  474 00a6 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  528 000c 0000     		.2byte	0
  529 000e 0000     		.2byte	0
  530 0010 00000000 		.4byte	.Ltext0
-ARM GAS  /tmp/ccJ3hDzT.s 			page 11
+ARM GAS  /tmp/cc2jztsJ.s 			page 11
 
 
  531 0014 40000000 		.4byte	.Letext0-.Ltext0
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  559              	.LASF18:
  560 0087 55554944 		.ascii	"UUIDL\000"
  560      4C00
-ARM GAS  /tmp/ccJ3hDzT.s 			page 12
+ARM GAS  /tmp/cc2jztsJ.s 			page 12
 
 
  561              	.LASF22:
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  585              	.LASF1:
  586 0168 73686F72 		.ascii	"short int\000"
  586      7420696E 
-ARM GAS  /tmp/ccJ3hDzT.s 			page 13
+ARM GAS  /tmp/cc2jztsJ.s 			page 13
 
 
  586      7400
@@ -739,17 +739,17 @@ ARM GAS  /tmp/ccJ3hDzT.s 			page 1
  594      65642063 
  594      68617200 
  595              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccJ3hDzT.s 			page 14
+ARM GAS  /tmp/cc2jztsJ.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 adc.c
-     /tmp/ccJ3hDzT.s:17     .text:0000000000000000 $t
-     /tmp/ccJ3hDzT.s:22     .text:0000000000000000 setup_ADC
-     /tmp/ccJ3hDzT.s:56     .text:0000000000000020 $d
-     /tmp/ccJ3hDzT.s:61     .text:0000000000000028 $t
-     /tmp/ccJ3hDzT.s:66     .text:0000000000000028 get_ADC
-     /tmp/ccJ3hDzT.s:91     .text:000000000000003c $d
+     /tmp/cc2jztsJ.s:17     .text:0000000000000000 $t
+     /tmp/cc2jztsJ.s:22     .text:0000000000000000 setup_ADC
+     /tmp/cc2jztsJ.s:56     .text:0000000000000020 $d
+     /tmp/cc2jztsJ.s:61     .text:0000000000000028 $t
+     /tmp/cc2jztsJ.s:66     .text:0000000000000028 get_ADC
+     /tmp/cc2jztsJ.s:91     .text:000000000000003c $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

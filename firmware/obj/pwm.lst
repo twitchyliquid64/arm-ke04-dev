@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccEy6UaP.s 			page 1
+ARM GAS  /tmp/ccTvacoC.s 			page 1
 
 
    1              		.cpu cortex-m0plus
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
   26:src/pwm.c     ****            | FTM_SC_PS(3);     //Divide by 8
   27:src/pwm.c     **** }
   30              		.loc 1 27 0
-ARM GAS  /tmp/ccEy6UaP.s 			page 2
+ARM GAS  /tmp/ccTvacoC.s 			page 2
 
 
   31              		@ sp needed
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
   31:src/pwm.c     ****   FTM0->CONTROLS[1].CnV  = amt;
   75              		.loc 1 31 0
   76 0032 9861     		str	r0, [r3, #24]
-ARM GAS  /tmp/ccEy6UaP.s 			page 3
+ARM GAS  /tmp/ccTvacoC.s 			page 3
 
 
   77              		.loc 1 32 0
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  131 0059 31       		.byte	0x31
  132 005a 5E000000 		.4byte	0x5e
  133 005e 02       		.uleb128 0x2
-ARM GAS  /tmp/ccEy6UaP.s 			page 4
+ARM GAS  /tmp/ccTvacoC.s 			page 4
 
 
  134 005f 02       		.byte	0x2
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  188 00c6 0F020000 		.4byte	0x20f
  189 00ca 09       		.uleb128 0x9
  190 00cb 534300   		.ascii	"SC\000"
-ARM GAS  /tmp/ccEy6UaP.s 			page 5
+ARM GAS  /tmp/ccTvacoC.s 			page 5
 
 
  191 00ce 03       		.byte	0x3
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  245 0143 03       		.byte	0x3
  246 0144 6D02     		.2byte	0x26d
  247 0146 98000000 		.4byte	0x98
-ARM GAS  /tmp/ccEy6UaP.s 			page 6
+ARM GAS  /tmp/ccTvacoC.s 			page 6
 
 
  248 014a 5C       		.byte	0x5c
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  302 01bf 80       		.byte	0x80
  303 01c0 08       		.uleb128 0x8
  304 01c1 D8010000 		.4byte	.LASF28
-ARM GAS  /tmp/ccEy6UaP.s 			page 7
+ARM GAS  /tmp/ccTvacoC.s 			page 7
 
 
  305 01c5 03       		.byte	0x3
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  359 023d 03       		.byte	0x3
  360 023e 00       		.byte	0
  361 023f 0C       		.uleb128 0xc
-ARM GAS  /tmp/ccEy6UaP.s 			page 8
+ARM GAS  /tmp/ccTvacoC.s 			page 8
 
 
  362 0240 1E020000 		.4byte	.LASF34
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  416 02b5 D608     		.2byte	0x8d6
  417 02b7 98000000 		.4byte	0x98
  418 02bb 1C       		.byte	0x1c
-ARM GAS  /tmp/ccEy6UaP.s 			page 9
+ARM GAS  /tmp/ccTvacoC.s 			page 9
 
 
  419 02bc 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  473 0015 00       		.byte	0
  474 0016 0B       		.uleb128 0xb
  475 0017 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccEy6UaP.s 			page 10
+ARM GAS  /tmp/ccTvacoC.s 			page 10
 
 
  476 0018 3E       		.uleb128 0x3e
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  530 004e 13       		.uleb128 0x13
  531 004f 00       		.byte	0
  532 0050 00       		.byte	0
-ARM GAS  /tmp/ccEy6UaP.s 			page 11
+ARM GAS  /tmp/ccTvacoC.s 			page 11
 
 
  533 0051 08       		.uleb128 0x8
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  587 0087 0B       		.uleb128 0xb
  588 0088 3B       		.uleb128 0x3b
  589 0089 05       		.uleb128 0x5
-ARM GAS  /tmp/ccEy6UaP.s 			page 12
+ARM GAS  /tmp/ccTvacoC.s 			page 12
 
 
  590 008a 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  644 00c2 08       		.uleb128 0x8
  645 00c3 3A       		.uleb128 0x3a
  646 00c4 0B       		.uleb128 0xb
-ARM GAS  /tmp/ccEy6UaP.s 			page 13
+ARM GAS  /tmp/ccTvacoC.s 			page 13
 
 
  647 00c5 3B       		.uleb128 0x3b
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  686 0040 7372632F 		.ascii	"src/pwm.c\000"
  686      70776D2E 
  686      6300
-ARM GAS  /tmp/ccEy6UaP.s 			page 14
+ARM GAS  /tmp/ccTvacoC.s 			page 14
 
 
  687              	.LASF37:
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  716 00e1 494E5643 		.ascii	"INVCTRL\000"
  716      54524C00 
  717              	.LASF17:
-ARM GAS  /tmp/ccEy6UaP.s 			page 15
+ARM GAS  /tmp/ccTvacoC.s 			page 15
 
 
  718 00e9 53544154 		.ascii	"STATUS\000"
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  743              	.LASF48:
  744 01c4 70776D5F 		.ascii	"pwm_set_amount\000"
  744      7365745F 
-ARM GAS  /tmp/ccEy6UaP.s 			page 16
+ARM GAS  /tmp/ccTvacoC.s 			page 16
 
 
  744      616D6F75 
@@ -950,17 +950,17 @@ ARM GAS  /tmp/ccEy6UaP.s 			page 1
  770 023a 55554944 		.ascii	"UUIDMH\000"
  770      4D4800
  771              		.ident	"GCC: (15:4.9.3+svn231177-1) 4.9.3 20150529 (prerelease)"
-ARM GAS  /tmp/ccEy6UaP.s 			page 17
+ARM GAS  /tmp/ccTvacoC.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pwm.c
-     /tmp/ccEy6UaP.s:17     .text:0000000000000000 $t
-     /tmp/ccEy6UaP.s:22     .text:0000000000000000 setup_PWM
-     /tmp/ccEy6UaP.s:54     .text:0000000000000020 $d
-     /tmp/ccEy6UaP.s:61     .text:0000000000000030 $t
-     /tmp/ccEy6UaP.s:66     .text:0000000000000030 pwm_set_amount
-     /tmp/ccEy6UaP.s:82     .text:0000000000000038 $d
+     /tmp/ccTvacoC.s:17     .text:0000000000000000 $t
+     /tmp/ccTvacoC.s:22     .text:0000000000000000 setup_PWM
+     /tmp/ccTvacoC.s:54     .text:0000000000000020 $d
+     /tmp/ccTvacoC.s:61     .text:0000000000000030 $t
+     /tmp/ccTvacoC.s:66     .text:0000000000000030 pwm_set_amount
+     /tmp/ccTvacoC.s:82     .text:0000000000000038 $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS
