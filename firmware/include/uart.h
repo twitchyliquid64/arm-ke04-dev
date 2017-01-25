@@ -7,4 +7,8 @@
 uint8_t availableUART();
 void  setup_UART();
 uint8_t readUART();
+
+void writeUART_str(char* str);
+void writeUART(uint8_t ch);
+
 #endif
